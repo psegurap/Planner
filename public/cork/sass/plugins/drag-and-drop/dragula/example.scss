@@ -348,7 +348,7 @@ body.gu-unselectable div.media.el-drag-ex-3.gu-mirror {
 .parent.ex-5 {
   .dragula {
     div, .gu-transit {
-      color: $white;
+      color: #fff;
       align-self: center;
     }
 
@@ -367,7 +367,7 @@ body.gu-unselectable div.media.el-drag-ex-3.gu-mirror {
     margin-right: 5px;
     background-color: $m-color_10;
     border-radius: 2px;
-    color: $white;
+    color: #fff;
     cursor: move;
   }
 }
@@ -377,7 +377,7 @@ body.gu-unselectable .handle {
   margin-right: 5px;
   background-color: $m-color_10;
   border-radius: 2px;
-  color: $white;
+  color: #fff;
   cursor: move;
 }
 
@@ -411,7 +411,7 @@ body.gu-unselectable .handle {
 }
 
 .parent.ex-5 .dragula .media .media-body h5, body.gu-unselectable .media.el-drag-ex-5.gu-mirror .media-body h6 {
-  color: $black;
+  color: #000;
 }
 
 .parent.ex-5 .dragula {
@@ -424,7 +424,7 @@ body.gu-unselectable .handle {
   }
 
   .media .media-body p, .gu-transit .media .media-body p {
-    color: $black;
+    color: #000;
   }
 }
 

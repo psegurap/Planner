@@ -42,7 +42,17 @@
     border-radius: 4px;
   }
 
+  > input.new-control-input:disabled ~ span.new-control-indicator {
+    opacity: 0.6;
+    background-color: $m-color_3;
+    border: 1px solid $m-color_4;
+  }
+
   cursor: pointer;
+
+  &.disabled {
+    cursor: default;
+  }
 
   > input:checked ~ span.new-control-indicator {
     background: $m-color_6;
@@ -53,7 +63,7 @@
   }
 
   span.new-control-indicator:after {
-    border: solid $white;
+    border: solid #fff;
     top: 50%;
     left: 50%;
     margin-left: -2px;
@@ -234,7 +244,17 @@
       border-radius: 50%;
     }
 
+    > input.new-control-input:disabled ~ span.new-control-indicator {
+      opacity: 0.6;
+      background-color: $m-color_3;
+      border: 1px solid $m-color_4;
+    }
+
     cursor: pointer;
+
+    &.disabled {
+      cursor: default;
+    }
 
     > input:checked ~ span.new-control-indicator {
       background: $m-color_6;
@@ -251,7 +271,7 @@
       border-radius: 50%;
       height: 6px;
       width: 6px;
-      background-color: $white;
+      background-color: #fff;
     }
 
     &.square-radio {

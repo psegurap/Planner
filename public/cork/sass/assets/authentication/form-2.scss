@@ -14,7 +14,6 @@ body {
   margin: 0;
   padding: 0;
   background-color: $m-color_10;
-  max-width: 100%;
 }
 
 .form-form {
@@ -117,7 +116,6 @@ body {
       a {
         color: $m-color_14;
         border-bottom: 1px solid;
-        font-weight: 600;
       }
     }
 
@@ -128,7 +126,7 @@ body {
         position: relative;
 
         &:focus {
-          border: 1px solid $black;
+          border: 1px solid #000;
         }
       }
 
@@ -157,7 +155,7 @@ body {
           font-size: 14px;
           color: $m-color_14;
           padding-left: 31px;
-          font-weight: 600;
+          font-weight: 100;
         }
 
         a {

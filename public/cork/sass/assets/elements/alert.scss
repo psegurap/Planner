@@ -26,10 +26,11 @@
     vertical-align: middle;
     width: 33px;
     height: 33px;
+    stroke-width: 1.2;
   }
 
   .close {
-    color: $white;
+    color: #fff;
     opacity: 1;
     width: 18px;
   }
@@ -38,37 +39,37 @@
 /*Default Alerts*/
 
 .alert-primary {
-  color: $white;
+  color: #fff;
   background-color: $primary;
   border-color: $primary;
 }
 
 .alert-warning {
-  color: $white;
+  color: #fff;
   background-color: $warning;
   border-color: $warning;
 }
 
 .alert-success {
-  color: $white;
+  color: #fff;
   background-color: $success;
   border-color: $success;
 }
 
 .alert-info {
-  color: $white;
+  color: #fff;
   background-color: $info;
   border-color: $info;
 }
 
 .alert-danger {
-  color: $white;
+  color: #fff;
   background-color: $danger;
   border-color: $danger;
 }
 
 .alert-dark {
-  color: $white;
+  color: #fff;
   background-color: $dark;
   border-color: $dark;
 }
@@ -111,7 +112,7 @@
   }
 
   &.solid-alert-3 .close, &.solid-alert-4 .close {
-    color: $black;
+    color: #000;
   }
 }
 
@@ -123,8 +124,8 @@
 
 .alert-light-primary {
   color: $primary;
-  background-color: $l-primary;
-  border-color: $primary;
+  background-color: rgba(67, 97, 238, 0.15);
+  border-color: rgba(67, 97, 238, 0.55);
 
   svg.close {
     color: $primary;
@@ -133,8 +134,8 @@
 
 .alert-light-warning {
   color: $warning;
-  background-color: $l-warning;
-  border-color: $warning;
+  background-color: rgba(226, 160, 63, 0.15);
+  border-color: rgba(226, 160, 63, 0.55);
 
   svg.close {
     color: $warning;
@@ -143,8 +144,8 @@
 
 .alert-light-success {
   color: $success;
-  background-color: $l-success;
-  border-color: $success;
+  background-color: rgba(26, 188, 156, 0.15);
+  border-color: rgba(26, 188, 156, 0.55);
 
   svg.close {
     color: $success;
@@ -153,8 +154,8 @@
 
 .alert-light-info {
   color: $info;
-  background-color: $l-info;
-  border-color: $info;
+  background-color: rgba(33, 150, 243, 0.15);
+  border-color: rgba(33, 150, 243, 0.55);
 
   svg.close {
     color: $info;
@@ -163,8 +164,8 @@
 
 .alert-light-danger {
   color: $danger;
-  background-color: $l-danger;
-  border-color: $danger;
+  background-color: rgba(231, 81, 90, 0.15);
+  border-color: rgba(231, 81, 90, 0.55);
 
   svg.close {
     color: $danger;
@@ -172,9 +173,9 @@
 }
 
 .alert-light-dark {
-  color: $dark;
-  background-color: $l-dark;
-  border-color: $dark;
+  color: $m-color_4;
+  background-color: rgba(59, 63, 92, 0.15);
+  border-color: rgba(59, 63, 92, 0.55);
 
   svg.close {
     color: $dark;
@@ -184,7 +185,7 @@
 /*  Background Alerts      */
 
 .alert-background {
-  color: $white;
+  color: #fff;
   background: #fff url(../../img/ab-1.jpeg) no-repeat center center;
   background-size: cover;
   border: none;
@@ -193,7 +194,7 @@
 /*  Gradient Alerts      */
 
 .alert-gradient {
-  color: $white;
+  color: #fff;
   border: none;
   background-size: cover;
   background-image: linear-gradient(135deg, #bc1a4e 0%, #004fe6 100%);
@@ -204,10 +205,10 @@
 /* Default */
 
 .custom-alert-1 {
-  background-color: $secondary;
-  border-color: $secondary;
+  background-color: $m-color_25;
+  border-color: $m-color_25;
   border-radius: 5px;
-  color: $white;
+  color: $m-color_18;
 
   .alert-icon {
     margin-right: 25px;
@@ -233,7 +234,7 @@
   border-left: 64px solid;
 
   svg:not(.close) {
-    color: $white;
+    color: #FFF;
     width: 4rem;
     left: -4rem;
     text-align: center;
@@ -252,7 +253,7 @@
   border-right: 64px solid;
 
   svg:not(.close) {
-    color: $white;
+    color: #FFF;
     width: 4rem;
     right: -4rem;
     text-align: center;

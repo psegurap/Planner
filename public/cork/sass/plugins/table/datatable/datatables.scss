@@ -16,7 +16,7 @@
  *   DataTables 1.10.16
  */
 
-table.dataTable {
+ table.dataTable {
   clear: both;
   width: 100% !important;
   margin-top: 6px !important;
@@ -28,7 +28,7 @@ table.dataTable {
   td, th {
     -webkit-box-sizing: content-box;
     box-sizing: content-box;
-    padding: 9px 7px;
+    padding: 12px 7px;
   }
 
   td.dataTables_empty, th.dataTables_empty {
@@ -65,7 +65,7 @@ div.dataTables_wrapper div {
       font-weight: normal;
       white-space: nowrap;
       text-align: left;
-      color: $m-color_6;
+      color: $l-dark;
       font-weight: 600;
     }
 

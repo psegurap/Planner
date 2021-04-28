@@ -28,7 +28,7 @@
   .filtered-list-search form > div svg {
     position: absolute;
     right: 11px;
-    color: #acb0c3;
+    color: #e3e4eb;
     height: 36px;
     width: 19px;
     top: 4px; }
@@ -117,7 +117,7 @@
   font-weight: 600; }
 
 .searchable-container .add-contact-box .add-contact-content .contact-name #c-name::-webkit-input-placeholder, .searchable-container .add-contact-box .add-contact-content .contact-email #c-email::-webkit-input-placeholder, .searchable-container .add-contact-box .add-contact-content .contact-occupation #c-occupation::-webkit-input-placeholder, .searchable-container .add-contact-box .add-contact-content .contact-phone #c-phone::-webkit-input-placeholder, .searchable-container .add-contact-box .add-contact-content .contact-location #c-location::-webkit-input-placeholder, .searchable-container .add-contact-box .add-contact-content .contact-name #c-name::-ms-input-placeholder, .searchable-container .add-contact-box .add-contact-content .contact-email #c-email::-ms-input-placeholder, .searchable-container .add-contact-box .add-contact-content .contact-occupation #c-occupation::-ms-input-placeholder, .searchable-container .add-contact-box .add-contact-content .contact-phone #c-phone::-ms-input-placeholder, .searchable-container .add-contact-box .add-contact-content .contact-location #c-location::-ms-input-placeholder, .searchable-container .add-contact-box .add-contact-content .contact-name #c-name::-moz-input-placeholder, .searchable-container .add-contact-box .add-contact-content .contact-email #c-email::-moz-input-placeholder, .searchable-container .add-contact-box .add-contact-content .contact-occupation #c-occupation::-moz-input-placeholder, .searchable-container .add-contact-box .add-contact-content .contact-phone #c-phone::-moz-input-placeholder, .searchable-container .add-contact-box .add-contact-content .contact-location #c-location::-moz-input-placeholder {
-  color: #acb0c3;
+  color: #e3e4eb;
   font-weight: 600; }
 
 .searchable-container .add-contact-box .add-contact-content .contact-name, .searchable-container .add-contact-box .add-contact-content .contact-email, .searchable-container .add-contact-box .add-contact-content .contact-occupation, .searchable-container .add-contact-box .add-contact-content .contact-phone {
@@ -142,10 +142,10 @@
       font-weight: 600;
       margin-right: 8px; }
   .searchable-container .modal-footer .btn#btn-add {
-    background-color: #1b55e2;
+    background-color: #4361ee;
     color: #fff;
     font-weight: 600;
-    border: 1px solid #1b55e2;
+    border: 1px solid #4361ee;
     padding: 10px 25px; }
   .searchable-container .modal-footer .btn#btn-edit {
     background-color: #009688;
@@ -189,9 +189,8 @@
   transition: all 0.35s ease;
   box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2); }
 
-.searchable-container .searchable-items.list .items:not(.items-header-section) .item-content:hover {
-  -webkit-transform: translateY(0) scale(1.03);
-  transform: translateY(0) scale(1.01); }
+.searchable-container .searchable-items.list .items .item-content:hover .user-meta-info .user-name, .searchable-container .searchable-items.list .items .item-content:hover .user-email p, .searchable-container .searchable-items.list .items .item-content:hover .user-location p, .searchable-container .searchable-items.list .items .item-content:hover .user-phone p {
+      color: #2196f3; }
 
 .searchable-container .searchable-items.list .items .user-profile {
   display: flex; }
@@ -241,7 +240,7 @@
 
 .searchable-container .searchable-items.list .items .action-btn {
   font-weight: 600;
-  color: #acb0c3; }
+  color: #e3e4eb; }
   .searchable-container .searchable-items.list .items .action-btn .delete-multiple {
     margin-right: 5px;
     cursor: pointer;
@@ -351,7 +350,7 @@
       margin-right: 10px; }
   .searchable-container .searchable-items.grid .items .action-btn {
     font-weight: 600;
-    color: #acb0c3;
+    color: #e3e4eb;
     text-align: center;
     margin: 20px 0; }
     .searchable-container .searchable-items.grid .items .action-btn .edit, .searchable-container .searchable-items.grid .items .action-btn .delete {

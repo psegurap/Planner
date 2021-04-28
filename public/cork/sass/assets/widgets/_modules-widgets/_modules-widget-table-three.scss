@@ -8,8 +8,6 @@
   position: relative;
 
   h5 {
-    font-size: 19px;
-    letter-spacing: 1px;
     margin-bottom: 20px;
   }
 
@@ -21,7 +19,7 @@
     border-collapse: separate;
     border-spacing: 0 5px;
     margin-bottom: 0;
-    background: transparent;
+    background-color: transparent;
 
     > {
       thead > tr > th {
@@ -30,14 +28,17 @@
         }
 
         &:last-child .th-content {
-          text-align: right;
-          margin-right: 10px;
+          padding: 0 15px 0 0;
+          width: 84%;
+          margin: 0 auto;
         }
 
         text-transform: initial;
         font-weight: 600;
         border-top: none;
         background: $m-color_18;
+        border-right: none;
+        border-left: none;
         padding-top: 0;
         padding-bottom: 0;
         padding-right: 0;
@@ -53,12 +54,13 @@
 
         &:last-child {
           border-bottom-right-radius: 6px;
+          padding-left: 0;
           border-top-right-radius: 6px;
         }
 
         .th-content {
-          color: $m-color_13;
-          font-weight: 600;
+          color: $m-color_4;
+          font-weight: 500;
           font-size: 14px;
           letter-spacing: 1px;
         }
@@ -75,31 +77,25 @@
           padding-left: 0;
           -webkit-transition: all 0.1s ease;
           transition: all 0.1s ease;
-        }
 
-        &:hover {
-          > td {
-            transform: translateY(-1px) scale(1.01);
-          }
-
-          > td .td-content {
-            color: $m-color_4;
+          .td-content {
+            cursor: pointer;
+            font-weight: 500;
+            letter-spacing: 1px;
+            color: $m-color_6;
           }
         }
 
         background: transparent;
 
-        > td .td-content {
-          cursor: pointer;
-          font-weight: 600;
-          letter-spacing: 1px;
-          color: $m-color_6;
+        &:hover > td .td-content {
+          color: $m-color_4;
         }
 
         > td {
           &:first-child {
             border-top-left-radius: 6px;
-            padding: 10px 0px 10px 15px;
+            padding: 12px 0px 12px 15px;
             border-bottom-left-radius: 6px;
           }
 
@@ -108,8 +104,9 @@
             border-bottom-right-radius: 6px;
 
             .td-content {
-              text-align: right;
               padding: 0 15px 0 0;
+              width: 50%;
+              margin: 0 auto;
             }
           }
         }
@@ -117,7 +114,9 @@
     }
 
     tr > td:nth-last-child(2) .td-content {
-      padding: 10px 0 10px 15px;
+      padding: 0 0 0 0;
+      width: 50%;
+      margin: 0 auto;
     }
 
     .td-content {
@@ -126,15 +125,38 @@
       }
 
       &.product-name {
-        color: $m-color_4;
+        color: $m-color_9;
         letter-spacing: 1px;
+        display: flex;
+
+        .prd-name {
+          font-weight: 600;
+          margin-bottom: 0;
+          font-size: 13px;
+        }
+      }
+    }
+
+    tr:hover .td-content.product-name .prd-name {
+      color: $m-color_6;
+    }
+
+    .td-content {
+      &.product-name .prd-category {
+        margin-bottom: 0;
+        font-size: 12px;
+        font-weight: 600;
+        text-shadow: 1px 1px 7px rgba(0, 0, 0, 0.26);
       }
 
       img {
-        width: 35px;
-        height: 35px;
-        border-radius: 50%;
+        width: 42px;
+        height: 42px;
+        border-radius: 6px;
         margin-right: 10px;
+        padding: 2px;
+        box-shadow: 1px 1px 16px 0px rgba(0, 0, 0, 0.18);
+        align-self: center;
       }
 
       .pricing {
@@ -169,13 +191,20 @@
       }
 
       a {
+        position: relative;
         padding: 0;
         font-size: 13px;
         background: transparent;
         transform: none;
         letter-spacing: 1px;
-        border-bottom: 1px dashed $m-color_4;
-        color: $m-color_5;
+
+        svg.feather-chevrons-right {
+          width: 15px;
+          height: 15px;
+          position: absolute;
+          left: -20px;
+          top: 1px;
+        }
       }
     }
   }

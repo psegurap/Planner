@@ -76,7 +76,7 @@
   }
 
   .breadcrumb-item + .breadcrumb-item::before {
-    color: $white;
+    color: #fff;
   }
 
   .breadcrumb li {
@@ -137,7 +137,7 @@
 
     &.active a {
       background: $primary;
-      color: $white;
+      color: #fff;
 
       &:after {
         border-left-color: $primary;

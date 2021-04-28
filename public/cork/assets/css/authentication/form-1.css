@@ -69,8 +69,7 @@ body {
     margin-bottom: 50px; }
     .form-form .form-form-wrap p.signup-link a {
       color: #009688;
-      border-bottom: 1px solid;
-      font-weight: 600; }
+      border-bottom: 1px solid; }
   .form-form .form-form-wrap form .field-wrapper.input {
     position: relative;
     padding: 11px 0 25px 0;
@@ -97,8 +96,7 @@ body {
       padding-left: 31px;
       font-weight: 100; }
     .form-form .form-form-wrap form .field-wrapper.terms_condition a {
-      color: #009688;
-      font-weight: 600; }
+      color: #009688; }
   .form-form .form-form-wrap form .field-wrapper input {
     display: inline-block;
     vertical-align: middle;
@@ -137,8 +135,7 @@ body {
     display: block;
     letter-spacing: 2px;
     font-size: 15px;
-    margin-top: 15px;
-    font-weight: 600; }
+    margin-top: 15px; }
   .form-form .form-form-wrap form .field-wrapper .n-chk .new-control-indicator {
     top: 1px;
     border: 1px solid #515365;
@@ -159,8 +156,7 @@ body {
     font-weight: 600;
     margin-top: 90px; }
     .form-form .terms-conditions a {
-      color: #009688;
-      font-weight: 600; }
+      color: #009688; }
 
 .form-image {
   display: -webkit-box;

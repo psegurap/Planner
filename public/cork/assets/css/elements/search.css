@@ -104,8 +104,8 @@
       color: #e7515a;
       border: 2px dashed #e7515a; }
     .searchable-container .items .user-status span.badge.badge-primary {
-      color: #1b55e2;
-      border: 2px dashed #1b55e2; }
+      color: #4361ee;
+      border: 2px dashed #4361ee; }
   .searchable-container .items .action-btn p {
     margin-bottom: 0;
     color: #506690;
@@ -197,7 +197,7 @@
     Search Box
 */
 .search-input-group-style.input-group .input-group-prepend .input-group-text svg {
-  color: #1b55e2; }
+  color: #4361ee; }
 
 .search-input-group-style input {
   border: none;

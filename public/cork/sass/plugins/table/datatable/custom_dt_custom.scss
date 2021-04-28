@@ -6,14 +6,8 @@
 
 .widget-content-area {
   box-shadow: none !important;
-}
-
-table.dataTable {
-  border-collapse: separate !important;
-  border-spacing: 0 5px;
-  margin-top: 50px !important;
-  margin-bottom: 50px !important;
-  border-collapse: collapse !important;
+  border: none;
+  border-radius: 6px;
 }
 
 .table-hover:not(.table-dark) tbody tr {
@@ -23,7 +17,7 @@ table.dataTable {
   }
 
   &:hover .new-control.new-checkbox .new-control-indicator {
-    border: 2px solid $m-color_14;
+    border: 1px solid $primary;
   }
 }
 
@@ -32,15 +26,15 @@ table.dataTable {
 .style-1 {
   .user-name {
     font-size: 15px;
-    font-weight: 600;
-    color: $warning;
+    color: $m-color_6;
   }
 
   .profile-img img {
-    width: 50px;
-    height: 50px;
-    border: 4px solid rgba(59, 63, 92, 0.25);
     border-radius: 6px;
+    background-color: $dark;
+    padding: 2px;
+    width: 35px;
+    height: 35px;
   }
 }
 
@@ -57,30 +51,13 @@ table.dataTable {
     color: $warning;
   }
 
+  .profile-img {}
+
   img.profile-img {
-    width: 50px;
-    height: 50px;
-    border: 4px solid rgba(59, 63, 92, 0.25);
-  }
-
-  .badge {
-    background: transparent;
-    transform: none;
-  }
-
-  .badge-primary {
-    color: $primary;
-    border: 2px dashed $primary;
-  }
-
-  .badge-warning {
-    color: $warning;
-    border: 2px dashed $warning;
-  }
-
-  .badge-danger {
-    color: $danger;
-    border: 2px dashed $danger;
+    background-color: $dark;
+    padding: 2px;
+    width: 35px;
+    height: 35px;
   }
 }
 
@@ -100,58 +77,41 @@ table.dataTable {
   .profile-img {}
 
   img.profile-img {
-    width: 50px;
-    height: 50px;
-    border: 4px solid rgba(59, 63, 92, 0.25);
     border-radius: 6px;
-  }
-
-  .badge {
-    background: transparent;
-    transform: none;
-  }
-
-  .badge-primary {
-    color: $primary;
-    border: 2px dashed $primary;
-  }
-
-  .badge-warning {
-    color: $warning;
-    border: 2px dashed $warning;
-  }
-
-  .badge-danger {
-    color: $danger;
-    border: 2px dashed $danger;
+    background-color: $dark;
+    padding: 2px;
+    width: 35px;
+    height: 35px;
   }
 
   .table-controls {
     padding: 0;
+    margin-bottom: 0;
 
     li {
       list-style: none;
       display: inline;
 
       svg {
-        color: $m-color_6;
+        cursor: pointer;
+        margin: 0;
         vertical-align: middle;
+        cursor: pointer;
+        color: $m-color_9;
+        stroke-width: 1.5;
         width: 28px;
         height: 28px;
-        fill: rgba(0, 23, 55, 0.08);
-        cursor: pointer;
       }
     }
   }
 
   &.table-hover:not(.table-dark) tbody tr:hover {
     .table-controls li svg {
-      color: $danger;
-      fill: rgba(231, 81, 90, 0.2196078431);
+      color: $m-color_6;
     }
 
     td:first-child {
-      color: $m-color_14 !important;
+      color: $primary !important;
     }
   }
 }

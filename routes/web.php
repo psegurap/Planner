@@ -17,7 +17,19 @@ Route::middleware(['auth', 'verified'])->group(function () {
     
     Route::get('/', function () {
         return view('home');
-    });
+    })->name('home');
+
+    Route::get('/incomes', function(){
+        return view('incomes');
+    })->name('incomes');
+
+    Route::get('/bills', function(){
+        return view('bills');
+    })->name('bills');
+
+    Route::get('/subscriptions', function(){
+        return view('subscriptions');
+    })->name('subscriptions');
 });
 
 Auth::routes();

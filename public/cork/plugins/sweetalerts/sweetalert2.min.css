@@ -469,7 +469,7 @@ pre {
     display: inline-block;
     position: relative; }
   .swal2-progresssteps .swal2-progresscircle {
-    background: #1b55e2;
+    background: #4361ee;
     border-radius: 2em;
     color: #fff;
     height: 2em;
@@ -486,7 +486,7 @@ pre {
       .swal2-progresssteps .swal2-progresscircle.swal2-activeprogressstep ~ .swal2-progresscircle, .swal2-progresssteps .swal2-progresscircle.swal2-activeprogressstep ~ .swal2-progressline {
         background: #506690 !important; }
   .swal2-progresssteps .swal2-progressline {
-    background: #1b55e2;
+    background: #4361ee;
     height: .4em;
     margin: 0 -1px;
     z-index: 10; }

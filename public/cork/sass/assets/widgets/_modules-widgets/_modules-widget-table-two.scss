@@ -8,8 +8,6 @@
   position: relative;
 
   h5 {
-    font-size: 19px;
-    letter-spacing: 1px;
     margin-bottom: 20px;
   }
 
@@ -35,7 +33,7 @@
         padding-left: 0;
         -webkit-transition: all 0.1s ease;
         transition: all 0.1s ease;
-        padding: 10px 0 10px 5px;
+        padding: 10px 0 10px 15px;
 
         &:first-child {
           border-bottom-left-radius: 6px;
@@ -48,7 +46,7 @@
         }
 
         .th-content {
-          color: $m-color_13;
+          color: $m-color_4;
           font-weight: 600;
           font-size: 14px;
           letter-spacing: 1px;
@@ -59,7 +57,6 @@
         }
 
         &:last-child .th-content {
-          text-align: right;
           margin-right: 10px;
         }
 
@@ -79,23 +76,17 @@
           padding-left: 0;
           -webkit-transition: all 0.1s ease;
           transition: all 0.1s ease;
-        }
 
-        &:hover {
-          > td {
-            transform: translateY(-1px) scale(1.01);
-          }
-
-          > td .td-content {
-            color: $m-color_4;
+          .td-content {
+            cursor: pointer;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: $m-color_6;
           }
         }
 
-        > td .td-content {
-          cursor: pointer;
-          font-weight: 600;
-          letter-spacing: 1px;
-          color: $m-color_6;
+        &:hover > td .td-content {
+          color: $m-color_4;
         }
 
         > td {
@@ -107,8 +98,7 @@
 
           &:last-child {
             border-top-right-radius: 6px;
-            padding: 15.5px 15px 15.5px 0;
-            text-align: right;
+            padding: 15.5px 0 15.5px 15px;
             border-bottom-right-radius: 6px;
           }
         }
@@ -117,18 +107,41 @@
 
     .td-content {
       &.customer-name {
-        color: $m-color_4;
+        color: $m-color_6;
+        font-weight: 600;
+        margin-bottom: 0;
+        font-size: 13px;
+        display: flex;
       }
 
       &.product-brand {
-        letter-spacing: 1px;
+        margin-bottom: 0;
+        font-size: 12px;
+        font-weight: 600;
+        text-shadow: 1px 1px 7px rgba(0, 0, 0, 0.26);
+        padding: 10px 0 10px 15px;
+      }
+
+      &.product-invoice {
+        padding: 10px 0 10px 15px;
+      }
+
+      &.pricing {
+        width: 50%;
+        margin: 0 auto;
       }
 
       img {
         width: 35px;
-        height: 35px;
-        border-radius: 50%;
-        margin-right: 13px;
+        height: 34px;
+        border-radius: 6px;
+        margin-right: 10px;
+        padding: 2px;
+        align-self: center;
+      }
+
+      &.customer-name span {
+        align-self: center;
       }
     }
 
@@ -138,18 +151,12 @@
 
     .td-content .badge {
       transform: none;
+      border: none;
+      font-weight: 500;
     }
 
-    tr {
-      &:hover .td-content .badge {
-        transform: translateY(-3px);
-        background-color: transparent;
-      }
-
-      .td-content .outline-badge-success {
-        color: $m-color_14;
-        border-color: $m-color_14;
-      }
+    tr:hover .td-content .badge {
+      background: transparent;
     }
   }
 }

@@ -29,7 +29,7 @@
     display: flex;
     justify-content: center;
     align-self: center;
-    background-color: #1b55e2;
+    background-color: #4361ee;
     background: linear-gradient(to right, #3cba92 0%, #0ba360 100%);
     border-radius: 50%;
     box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2); }
@@ -131,7 +131,7 @@
     height: 20px;
     margin-bottom: 31px; }
     .skills .widget-content-area .progress .progress-bar {
-      background-color: #1b55e2;
+      background-color: #4361ee;
       background: linear-gradient(to right, #2b5876 0%, #4e4376 100%);
       border-radius: 1rem;
       font-size: 12px;
@@ -186,7 +186,7 @@
       width: 30px;
       height: 30px;
       margin-right: 21px;
-      color: #1b55e2; }
+      color: #4361ee; }
     .bio .widget-content-area .b-skills h5 {
       margin-bottom: 10px;
       font-size: 16px; }

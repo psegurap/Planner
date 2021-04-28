@@ -58,6 +58,7 @@ var App = function() {
         },
         search: function() {
             $(Selector.searchFull).click(function(event) {
+                // console.log('dfdfdf')
                $(this).parents('.search-animated').find('.search-full').addClass(ToggleClasses.inputFocused);
                $(this).parents('.search-animated').addClass('show-search');
                $(Selector.overlay.search).addClass('show');
@@ -92,13 +93,17 @@ var App = function() {
             });
         },
         preventAccordionOnClick: function() {
-            $('.menu > a[data-toggle="collapse"], .menu.single-menu  a[data-toggle="collapse"]').click(function(e){
-                getWindowWidth = window.innerWidth;
-                if (getWindowWidth > 991) {
-                    e.preventDefault(); // to stop the page jump to the anchor target.
-                    e.stopPropagation();
-                }
-            })
+            if(document.body.classList.contains('alt-click-menu')) {
+                return;
+            } else {
+                $('.menu > a[data-toggle="collapse"], .menu.single-menu  a[data-toggle="collapse"]').click(function(e){
+                    getWindowWidth = window.innerWidth;
+                    if (getWindowWidth > 991) {
+                        e.preventDefault(); // to stop the page jump to the anchor target.
+                        e.stopPropagation();
+                    }
+                })
+            }
         }
     }
 
@@ -120,6 +125,11 @@ var App = function() {
                 }
             });
         },
+        closeDropdownDocumentClick: function() {
+            $(document).click(function(event){
+                $('.topbar-nav .collapse').collapse('hide')
+            });
+        },
         default: function() {
             $(document).scroll(function(event) {
 
@@ -130,7 +140,7 @@ var App = function() {
               var windowScroll = $(window).scrollTop();
               // Check if window scroll > or == element offset?
                 if (windowScroll >= elementOffset) {
-                    sideNav.css('top', '42px');
+                    sideNav.css('top', '147px');
                 } else if (windowScroll < elementOffset) {
                     sideNav.css('top', '147px');
                 }
@@ -141,7 +151,8 @@ var App = function() {
             var getDropdownElement = document.querySelectorAll('.more-dropdown .dropdown-item');
             for (var i = 0; i < getDropdownElement.length; i++) {
                 getDropdownElement[i].addEventListener('click', function() {
-                    document.querySelectorAll('.more-dropdown .dropdown-toggle > img')[0].setAttribute('src', 'assets/img/' + this.getAttribute('data-img-value') + '.png' );
+                    document.querySelectorAll('.more-dropdown .dropdown-toggle > span')[0].innerText = this.getAttribute('data-value');
+                    document.querySelectorAll('.more-dropdown .dropdown-toggle > img')[0].setAttribute('src', 'assets/img/' + this.getAttribute('data-img-value') + '.svg' );
                 })
             }
         },
@@ -173,6 +184,7 @@ var App = function() {
             var windowWidth = window.innerWidth;
             if ( windowWidth > MediaSize.md ) {
                 toggleFunction.search();
+                inBuiltfunctionality.closeDropdownDocumentClick();
                 console.log('On Desktop Refresh');
                 desktopFunctions.preventAccordionOnClick();
             }
@@ -184,6 +196,7 @@ var App = function() {
                 if ( windowWidth > MediaSize.md ) {
                     toggleFunction.search();
                     toggleFunction.deactivateScroll();
+                    inBuiltfunctionality.closeDropdownDocumentClick();
                     console.log('On Desktop Resize');
                 }
             });
@@ -207,6 +220,7 @@ var App = function() {
             if (!$('body').hasClass('alt-menu')) {
                 inBuiltfunctionality.default();
             }
+
             inBuiltfunctionality.languageDropdown();
         },
     }

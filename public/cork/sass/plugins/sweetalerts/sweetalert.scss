@@ -127,8 +127,8 @@ body {
         height: 15px;
         width: 15px;
         border: 3px solid $m-color_6;
-        -webkit-box-shadow: 1px 1px 1px $white;
-        box-shadow: 1px 1px 1px $white;
+        -webkit-box-shadow: 1px 1px 1px #fff;
+        box-shadow: 1px 1px 1px #fff;
         border-right-color: transparent;
         border-radius: 50%;
         -webkit-animation: rotate-loading 1.5s linear 0s infinite normal;
@@ -141,7 +141,7 @@ body {
     border: 0;
     -webkit-box-shadow: none;
     box-shadow: none;
-    color: $white;
+    color: #fff;
     cursor: pointer;
     padding: 10px 25px !important;
     box-shadow: 0px 5px 20px 0 rgba(0, 0, 0, 0.1) !important;
@@ -420,7 +420,7 @@ pre {
 
   &.swal2-error {
     border-color: $danger !important;
-    border: 5px solid #1b2e4b !important;
+    border: 5px solid $m-color_12 !important;
     box-shadow: 0px 3px 25px 0px rgba(113, 106, 202, 0.2);
 
     .swal2-x-mark {
@@ -591,7 +591,7 @@ pre {
   .swal2-progresscircle {
     background: $primary;
     border-radius: 2em;
-    color: $white;
+    color: #fff;
     height: 2em;
     line-height: 2em;
     text-align: center;
@@ -986,13 +986,7 @@ pre {
     opacity: 1;
   }
 }
-.swal2-popup.swal2-toast {
-  -webkit-box-shadow: 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12), 0 3px 5px -1px rgba(0,0,0,.2)!important;
-  -moz-box-shadow: 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12), 0 3px 5px -1px rgba(0,0,0,.2)!important;
-  box-shadow: 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12), 0 3px 5px -1px rgba(0,0,0,.2)!important;
-  background: #0e1726;
-  color: #e0e6ed!important;
-}
+
 .swal2-animate-x-mark {
   -webkit-animation: animate-x-mark 0.5s;
   animation: animate-x-mark 0.5s;

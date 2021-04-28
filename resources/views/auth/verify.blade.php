@@ -222,10 +222,9 @@
                                     <h6>{{ __('Verify Your Email Address') }}</h6>
                                     <div>
                                         @if (session('resent'))
-                                            <div class="d-block my-2 my-3"  role="alert">
-                                                <span class="badge outline-badge-success font-italic" style="font-size: initial">
-
-                                                    {{ __('A fresh verification link has been sent to your email address.') }}
+                                            <div class="d-block my-2 my-3 outline-badge-success p-1 rounded" role="alert">
+                                                <span class="">
+                                                    A fresh verification link has been sent to your email address.
                                                 </span>
                                             </div>
                                         @endif

@@ -4,6 +4,7 @@
 
 @import '../../base/base';    // Base Variables
 
+
 /*----------Theme checkbox---------*/
 
 .new-control {
@@ -120,7 +121,7 @@
       font-size: 12px;
       font-weight: 600;
       padding: 7px;
-      background: $white;
+      background: #fff;
       border-radius: 5px;
       opacity: 1;
       color: $info;
@@ -188,7 +189,7 @@
 
       &#btn-add {
         background-color: $primary;
-        color: $white;
+        color: #fff;
         font-weight: 600;
         border: 1px solid $primary;
         padding: 10px 25px;
@@ -196,7 +197,7 @@
 
       &#btn-edit {
         background-color: $m-color_14;
-        color: $white;
+        color: #fff;
         font-weight: 600;
         border: 1px solid $m-color_14;
         padding: 10px 25px;

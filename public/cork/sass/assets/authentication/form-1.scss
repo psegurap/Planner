@@ -90,7 +90,6 @@ body {
       a {
         color: $m-color_14;
         border-bottom: 1px solid;
-        font-weight: 600;
       }
     }
 
@@ -101,7 +100,7 @@ body {
         border-bottom: none;
 
         &:focus {
-          border: 1px solid $black;
+          border: 1px solid #000;
         }
       }
 
@@ -135,7 +134,6 @@ body {
 
         a {
           color: $m-color_14;
-          font-weight: 600;
         }
       }
 
@@ -190,7 +188,6 @@ body {
         letter-spacing: 2px;
         font-size: 15px;
         margin-top: 15px;
-        font-weight: 600;
       }
 
       .n-chk .new-control-indicator {
@@ -225,7 +222,6 @@ body {
 
     a {
       color: $m-color_14;
-      font-weight: 600;
     }
   }
 }

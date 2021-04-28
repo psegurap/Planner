@@ -4,23 +4,6 @@
 
 @import '../../base/base';    // Base Variables
 
-.action-btn {
-  p {
-    display: inline-block;
-    margin-right: 16px;
-    margin-bottom: 0;
-    font-size: 14px;
-    letter-spacing: 0px;
-    color: #bfc9d4;
-  }
-
-  svg {
-    width: 20px;
-    height: 20px;
-    vertical-align: bottom;
-    margin-right: 3px;
-  }
-}
 .modal-backdrop {
   background-color: $m-color_9;
 
@@ -87,7 +70,7 @@
 
     .edit-list {
       background-color: $m-color_14;
-      color: $white;
+      color: #fff;
       font-weight: 600;
       border: 1px solid $m-color_14;
       padding: 10px 25px;
@@ -95,7 +78,7 @@
 
     .btn.add-list {
       background-color: $primary;
-      color: $white;
+      color: #fff;
       font-weight: 600;
       border: 1px solid $primary;
       padding: 10px 25px;
@@ -121,7 +104,8 @@
   .modal-content {
     .card {
       border: 1px solid $m-color_18;
-      margin-bottom: 26px;
+
+      /* margin-bottom: 26px; */
       border-radius: 6px;
       cursor: pointer;
       background-color: $m-color_18;
@@ -154,78 +138,6 @@
 
     input {
       padding: 10px 16px;
-
-      &[type="range"] {
-        box-shadow: none;
-        padding: 0;
-
-        &::-webkit-slider-thumb {
-          -webkit-appearance: none;
-          appearance: none;
-          background: $m-color_14;
-          cursor: pointer;
-          -webkit-transition: all 0.35s ease;
-          transition: all 0.35s ease;
-        }
-
-        &:active::-webkit-slider-thumb {
-          -webkit-transform: scale(1.2);
-          transform: scale(1.2);
-          box-shadow: none;
-        }
-
-        &:focus::-webkit-slider-thumb {
-          box-shadow: none;
-        }
-      }
-    }
-
-    .range-count {
-      display: inline-block;
-      margin-left: 6px;
-      font-size: 16px;
-      font-weight: 700;
-      color: $m-color_14;
-    }
-  }
-}
-
-input[type=range] {
-  &::-webkit-slider-runnable-track, &::-moz-range-track, &::-ms-track {
-    background: $m-color_10;
-  }
-}
-
-#addTaskModal {
-  .modal-content {
-    .img-preview {
-      text-align: center;
-
-      img {
-        width: 280px;
-        height: 280px;
-        margin: 0 auto;
-      }
-    }
-
-    .custom-file .custom-file-label {
-      margin-bottom: 0;
-    }
-
-    .input-group .input-group-append {
-      height: 40px;
-    }
-
-    .custom-file .custom-file-label:after {
-      height: auto;
-      display: none;
-    }
-
-    .input-group-append .input-group-text {
-      border: none;
-      border-top-right-radius: 4px;
-      border-bottom-right-radius: 4px;
-      background-color: $dark;
     }
   }
 
@@ -252,7 +164,7 @@ input[type=range] {
 
     [data-btnfn="addTask"] {
       background-color: $primary;
-      color: $white;
+      color: #fff;
       font-weight: 600;
       border: 1px solid $primary;
       padding: 10px 25px;
@@ -260,13 +172,63 @@ input[type=range] {
 
     [data-btnfn="editTask"] {
       background-color: $m-color_14;
-      color: $white;
+      color: #fff;
       font-weight: 600;
       border: 1px solid $m-color_14;
       padding: 10px 25px;
     }
   }
 }
+
+/* #addTaskModal .modal-content input[type="range"] {
+    box-shadow: none;
+    padding: 0;
+}
+#addTaskModal .modal-content input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  background: $m-color_14;
+  cursor: pointer;
+    -webkit-transition: all 0.35s ease;
+    transition: all 0.35s ease;
+}
+#addTaskModal .modal-content input[type="range"]:active::-webkit-slider-thumb {
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+  box-shadow: none;
+}
+#addTaskModal .modal-content input[type="range"]:focus::-webkit-slider-thumb { box-shadow: none; }
+#addTaskModal .modal-content .range-count {
+    display: inline-block;
+    margin-left: 6px;
+    font-size: 16px;
+    font-weight: 700;
+    color: $m-color_14;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  background: $m-color_10;
+}
+input[type=range]::-moz-range-track {
+  background: $m-color_10;
+}
+input[type=range]::-ms-track {
+  background: $m-color_10;
+} */
+/* #addTaskModal .modal-content .img-preview { text-align: center; }
+#addTaskModal .modal-content .img-preview img {
+    width: 280px;
+    height: 280px;
+    margin: 0 auto;
+} */
+/* #addTaskModal .modal-content .custom-file .custom-file-label { margin-bottom: 0; } */
+/* #addTaskModal .modal-content .input-group .input-group-append { height: 40px; } */
+/* #addTaskModal .modal-content .custom-file .custom-file-label:after { height: auto; display: none; } */
+/* #addTaskModal .modal-content .input-group-append .input-group-text {
+    border: none;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    background-color: $dark;
+} */
 
 /* Delete Modal*/
 
@@ -318,7 +280,7 @@ input[type=range] {
     border: none;
 
     [data-dismiss="modal"] {
-      background-color: $white;
+      background-color: #fff;
       color: $danger;
       font-weight: 700;
       border: 1px solid #e8e8e8;
@@ -326,7 +288,7 @@ input[type=range] {
     }
 
     [data-remove="task"] {
-      color: $white;
+      color: #fff;
       font-weight: 600;
       padding: 10px 25px;
     }
@@ -343,7 +305,7 @@ input[type=range] {
 .task-list-container {
   min-width: 309px;
   padding: 0 15px;
-  width: 467px;
+  width: 320px;
 
   &:first-child {
     padding-left: 0;
@@ -397,9 +359,9 @@ input[type=range] {
   }
 
   .add-s-task {
-    cursor: pointer;
     transition: all 0.3s ease-out;
     -webkit-transition: all 0.3s ease-out;
+    text-align: center;
 
     &:hover {
       -webkit-transform: translateY(-3px);
@@ -409,20 +371,20 @@ input[type=range] {
     .addTask {
       display: block;
       color: $m-color_4;
-      font-size: 14px;
-      font-weight: 600;
+      font-size: 13px;
+      font-weight: 700;
       text-align: center;
-      padding: 13px 11px;
-      border-radius: 4px;
-      background: $m-color_9;
+      display: inline-block;
+      cursor: pointer;
 
       &:hover {
-        color: $white;
+        color: #fff;
       }
 
       svg {
-        width: 18px;
-        vertical-align: bottom;
+        width: 16px;
+        height: 16px;
+        vertical-align: text-top;
       }
     }
   }
@@ -430,7 +392,8 @@ input[type=range] {
 
 .scrumboard {
   .task-header {
-    margin-bottom: 25px;
+    /* margin-bottom: 25px; */
+    margin-bottom: 0;
     display: flex;
     justify-content: space-between;
     padding: 20px 20px 0 20px;
@@ -599,6 +562,8 @@ input[type=range] {
     }
 
     &.task-text-progress .card-body .task-content {
+      margin-top: 20px;
+
       p {
         padding: 5px 20px 5px 20px;
         color: $m-color_4;
@@ -635,27 +600,27 @@ input[type=range] {
 
       .task-header {
         span {
-          color: $white;
+          color: #fff;
 
           svg {
-            color: $white;
+            color: #fff;
           }
         }
 
         svg {
           &.feather-edit-2, &.feather-trash-2 {
-            color: $white;
+            color: #fff;
           }
         }
 
         h4 {
-          color: $white;
+          color: #fff;
         }
       }
 
       &.task-text-progress .card-body .task-content {
         p {
-          color: $white;
+          color: #fff;
         }
 
         .progress .progress-bar {
@@ -664,21 +629,21 @@ input[type=range] {
       }
 
       .task-header svg.feather-user {
-        color: $white;
+        color: #fff;
       }
 
       .card-body {
         .task-body .task-bottom div {
           &.tb-section-1 {
-            color: $white;
+            color: #fff;
 
             svg {
-              color: $white;
+              color: #fff;
             }
           }
 
           &.tb-section-2 svg {
-            color: $white;
+            color: #fff;
           }
         }
 
@@ -729,7 +694,7 @@ input[type=range] {
 }
 
 .connect-sorting-content {
-  min-height: 80px;
+  min-height: 60px;
 }
 
 @keyframes progress-bar-stripes {

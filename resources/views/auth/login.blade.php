@@ -56,7 +56,7 @@
                                         <button type="submit" class="btn btn-primary" value="">Log In</button>
                                     </div>
                                 </div>
-                                @if(Session::get('verified') == true)
+                                @if(session()->has('verified'))
                                     <div class="alert alert-success mt-3 text-center" role="alert">
                                         <strong>Your account has been successfully verified.</strong>
                                     </div>

@@ -25,7 +25,7 @@
     .faq .faq-layouting .fq-tab-section h2 span {
       color: #009688; }
   .faq .faq-layouting .fq-tab-section .accordion .card {
-    border: 2px solid #1b2e4b;
+    border: 1px solid #1b2e4b;
     border-radius: 6px;
     margin-bottom: 4px;
     background: #1b2e4b; }
@@ -34,11 +34,13 @@
       border: none;
       background: none; }
       .faq .faq-layouting .fq-tab-section .accordion .card .card-header > div {
-        padding: 19px 30px;
+        padding: 15px 19px;
         font-weight: 600;
         font-size: 16px;
         color: #009688;
-        cursor: pointer; }
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between; }
         .faq .faq-layouting .fq-tab-section .accordion .card .card-header > div[aria-expanded="true"] {
           border-bottom: 2px solid #1b2e4b; }
       .faq .faq-layouting .fq-tab-section .accordion .card .card-header div .faq-q-title {
@@ -46,12 +48,12 @@
         font-size: 14px;
         color: #888ea8;
         font-weight: 600;
-        letter-spacing: 1px; }
+        letter-spacing: 1px;
+        align-self: center; }
       .faq .faq-layouting .fq-tab-section .accordion .card .card-header div[aria-expanded="true"] .faq-q-title {
         color: #009688; }
       .faq .faq-layouting .fq-tab-section .accordion .card .card-header div .icons {
-        display: inline-block;
-        float: right; }
+        display: inline-block; }
         .faq .faq-layouting .fq-tab-section .accordion .card .card-header div .icons svg {
           color: #888ea8; }
       .faq .faq-layouting .fq-tab-section .accordion .card .card-header div[aria-expanded="true"] .icons svg {

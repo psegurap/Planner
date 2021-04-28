@@ -7,6 +7,7 @@
 .widget {
   &.widget-chart-three {
     background: $m-color_10;
+    padding: 0;
 
     .widget-heading {
       display: flex;
@@ -20,6 +21,7 @@
         font-size: 17px;
         display: block;
         color: $m-color_3;
+        font-weight: 600;
         margin-bottom: 0;
       }
 
@@ -33,16 +35,19 @@
         }
 
         .dropdown-menu {
-          padding: 8px 8px;
           min-width: 10rem;
           border-radius: 6px;
-          top: 5px !important;
+          transform: translate3d(-142px, 0, 0px);
         }
       }
     }
 
     .apexcharts-legend-marker {
       left: -5px !important;
+    }
+
+    #uniqueVisits {
+      overflow: hidden;
     }
   }
 }

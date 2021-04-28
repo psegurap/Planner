@@ -50,7 +50,7 @@
   border: 2px solid #888ea8; }
 
 .switch.s-icons.s-outline-success {
-  color: #1b55e2;
+  color: #4361ee;
   margin: 0 3px 0 11px; }
 
 .switch.s-icons .slider:before {
@@ -205,7 +205,7 @@
   font-size: 16px; }
 
 .recommended .pricing-plan-label {
-  color: #acb0c3; }
+  color: #e3e4eb; }
   .recommended .pricing-plan-label strong {
     color: #009688;
     font-weight: 700;
@@ -377,9 +377,9 @@
   -webkit-transition: all 0.3s ease-out; }
 
 .pricing--norbu .pricing__action:hover, .pricing--norbu .pricing__action:focus {
-  color: #c2d5ff;
-  background: #1b55e2;
-  border-color: #1b55e2;
+  color: #eaf1ff;
+  background: #4361ee;
+  border-color: #4361ee;
   box-shadow: 0px 5px 20px 0 rgba(0, 0, 0, 0.1);
   will-change: opacity, transform;
   transition: all 0.3s ease-out;

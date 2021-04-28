@@ -464,7 +464,7 @@ pre {
     display: inline-block;
     position: relative; }
   .swal2-progresssteps .swal2-progresscircle {
-    background: #1b55e2;
+    background: #4361ee;
     border-radius: 2em;
     color: #fff;
     height: 2em;
@@ -481,7 +481,7 @@ pre {
       .swal2-progresssteps .swal2-progresscircle.swal2-activeprogressstep ~ .swal2-progresscircle, .swal2-progresssteps .swal2-progresscircle.swal2-activeprogressstep ~ .swal2-progressline {
         background: #506690 !important; }
   .swal2-progresssteps .swal2-progressline {
-    background: #1b55e2;
+    background: #4361ee;
     height: .4em;
     margin: 0 -1px;
     z-index: 10; }
@@ -736,13 +736,6 @@ pre {
     transform: scale(1);
     margin-top: 0;
     opacity: 1; } }
-
-.swal2-popup.swal2-toast {
-  -webkit-box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2) !important;
-  -moz-box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2) !important;
-  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2) !important;
-  background: #0e1726;
-  color: #e0e6ed !important; }
 
 .swal2-animate-x-mark {
   -webkit-animation: animate-x-mark 0.5s;

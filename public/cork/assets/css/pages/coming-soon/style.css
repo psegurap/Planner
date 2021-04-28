@@ -118,7 +118,8 @@ body {
       padding: 10px 17px;
       border-bottom-left-radius: 20px;
       background: #009688;
-      border-color: #009688; }
+      border-color: #009688;
+      box-shadow: none; }
       .coming-soon-cont .coming-soon-wrap form .field-wrapper button.btn:hover {
         transform: none; }
   .coming-soon-cont .social {

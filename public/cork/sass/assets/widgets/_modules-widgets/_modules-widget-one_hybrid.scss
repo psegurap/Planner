@@ -5,58 +5,73 @@
 */
 
 .widget-one_hybrid {
+  background: #fff;
   background: $m-color_10;
+  padding: 0 !important;
 
   .widget-heading {
     padding: 20px 13px;
 
-    .w-icon {
-      display: inline-block;
-      padding: 7px 8px;
-      border-radius: 50%;
+    .w-title {
+      display: flex;
       margin-bottom: 15px;
     }
 
+    .w-icon {
+      display: inline-block;
+      align-self: center;
+      padding: 10px;
+      border-radius: 12px;
+      margin-right: 16px;
+    }
+
     svg {
-      height: 18px;
-      width: 18px;
+      width: 22px;
+      height: 22px;
     }
 
     .w-value {
-      font-size: 21px;
-      font-weight: 700;
+      font-size: 24px;
+      font-weight: 600;
       margin-bottom: 0;
-      color: $m-color_3;
+      align-self: center;
     }
 
     h5 {
       margin-bottom: 0;
-      font-size: 15px;
-      color: $m-color_6;
+      font-size: 13px;
+      font-weight: 600;
+      color: $m-color_7;
     }
   }
 
+  .apexcharts-canvas svg {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+
   &.widget-followers .widget-heading .w-icon {
-    color: $white;
-    border: 1px solid $primary;
-    background-color: $primary;
+    color: $l-primary;
+    background: $primary;
   }
 
   &.widget-referral .widget-heading .w-icon {
-    color: $white;
-    border: 1px solid $danger;
+    color: $l-danger;
     background-color: $danger;
   }
 
-  &.widget-social .widget-heading .w-icon {
-    color: $white;
-    border: 1px solid $info;
-    background-color: $info;
+  &.widget-social {
+    background: $l-info;
+    background: $primary;
+
+    .widget-heading .w-icon {
+      color: $info;
+      border: 1px solid $info;
+    }
   }
 
   &.widget-engagement .widget-heading .w-icon {
-    color: $white;
-    border: 1px solid $m-color_14;
     background-color: $m-color_14;
+    color: $l-success;
   }
 }

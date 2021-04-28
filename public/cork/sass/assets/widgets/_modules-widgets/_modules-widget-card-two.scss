@@ -5,8 +5,8 @@
 */
 
 .widget-card-two {
+  padding: 20px 0px !important;
   background: $m-color_10;
-  padding: 20px 0px;
 
   .media {
     padding-left: 15px;
@@ -22,7 +22,7 @@
         width: 50px;
         height: 50px;
         border-radius: 50%;
-        border: 3px solid $m-color_3;
+        border: 3px solid $dark;
       }
     }
 
@@ -30,7 +30,7 @@
       align-self: center;
 
       h6 {
-        font-weight: 700;
+        font-weight: 600;
         font-size: 15px;
         letter-spacing: 0;
         margin-bottom: 0;
@@ -57,7 +57,7 @@
     .img-group img {
       width: 46px;
       height: 46px;
-      border-radius: 50%;
+      border-radius: 12px;
       border: 2px solid $dark;
 
       &:not(:last-child) {
@@ -69,14 +69,16 @@
       display: block;
       margin-top: 18px;
       background: $primary;
-      color: $white;
+      color: #fff;
       padding: 10px 10px;
       transform: none;
       margin-right: 15px;
       margin-left: 15px;
       font-size: 15px;
-      font-weight: 600;
+      font-weight: 500;
       letter-spacing: 1px;
+      border: none;
+      background: linear-gradient(229deg, #517281 0%, #3b5d70 27%, #4d5c82 72%, #5d647f 100%);
 
       &.btn {
         &:hover, &:focus {

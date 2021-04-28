@@ -87,7 +87,7 @@
       font-weight: 600; }
     .component-card_3 .card-body p.card-user_occupation {
       font-size: 14px;
-      color: #acb0c3;
+      color: #e3e4eb;
       letter-spacing: 1px; }
     .component-card_3 .card-body .card-star_rating {
       margin-bottom: 24px; }
@@ -97,7 +97,7 @@
         .component-card_3 .card-body .card-star_rating svg.fill {
           fill: #e2a03f; }
     .component-card_3 .card-body .card-text {
-      color: #acb0c3;
+      color: #e3e4eb;
       font-style: italic;
       font-size: 14px;
       letter-spacing: 1px; }
@@ -173,7 +173,7 @@
       margin-bottom: 3px; }
     .component-card_5 .card-body p.card-user_occupation {
       font-size: 14px;
-      color: #acb0c3;
+      color: #e3e4eb;
       letter-spacing: 1px;
       margin-bottom: 0; }
     .component-card_5 .card-body .card-text {
@@ -259,8 +259,8 @@
   .component-card_8 .progress-order .progress-order-header span.badge {
     font-size: 12px;
     padding: 6px 10px;
-    color: #c2d5ff;
-    background-color: #1b55e2; }
+    color: #eaf1ff;
+    background-color: #4361ee; }
   .component-card_8 .progress-order .progress-order-body ul li img {
     width: 40px;
     height: 40px; }

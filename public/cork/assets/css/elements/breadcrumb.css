@@ -103,10 +103,10 @@
   border-bottom-left-radius: 6px; }
 
 .breadcrumb-two .breadcrumb li.active a {
-  background: #1b55e2;
+  background: #4361ee;
   color: #fff; }
   .breadcrumb-two .breadcrumb li.active a:after {
-    border-left-color: #1b55e2; }
+    border-left-color: #4361ee; }
 
 .breadcrumb-two .breadcrumb li:last-child a {
   pointer-events: none;
@@ -133,7 +133,7 @@
     border-bottom-right-radius: 13px;
     border-top-right-radius: 13px; }
     .breadcrumb-three .breadcrumb-item.active {
-      color: #1b55e2;
+      color: #4361ee;
       font-weight: 600; }
     .breadcrumb-three .breadcrumb-item + .breadcrumb-item::before {
       color: #515365;

@@ -30,7 +30,7 @@ table.dataTable {
   table.dataTable td, table.dataTable th {
     -webkit-box-sizing: content-box;
     box-sizing: content-box;
-    padding: 9px 7px; }
+    padding: 12px 7px; }
   table.dataTable td.dataTables_empty, table.dataTable th.dataTables_empty {
     text-align: center; }
   table.dataTable.nowrap th, table.dataTable.nowrap td {
@@ -53,7 +53,7 @@ div.dataTables_wrapper div.dataTables_filter {
     font-weight: normal;
     white-space: nowrap;
     text-align: left;
-    color: #888ea8;
+    color: #e3e4eb;
     font-weight: 600; }
   div.dataTables_wrapper div.dataTables_filter input {
     margin-left: 0.5em;
