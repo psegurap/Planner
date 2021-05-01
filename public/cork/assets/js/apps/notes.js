@@ -166,15 +166,15 @@ getNoteTitleInput.addEventListener('input', function() {
 
 getNoteDescriptionInput = document.getElementById('n-description');
 
-getNoteDescriptionInput.addEventListener('input', function() {
+// getNoteDescriptionInput.addEventListener('input', function() {
 
-  getNoteDescriptionInputValue = this.value;
+//   getNoteDescriptionInputValue = this.value;
 
-  if (getNoteDescriptionInputValue == "") {
-    $_getValidationField[1].innerHTML = 'Description Required';
-    $_getValidationField[1].style.display = 'block';
-  } else {
-    $_getValidationField[1].style.display = 'none';
-  }
+//   if (getNoteDescriptionInputValue == "") {
+//     $_getValidationField[1].innerHTML = 'Description Required';
+//     $_getValidationField[1].style.display = 'block';
+//   } else {
+//     $_getValidationField[1].style.display = 'none';
+//   }
 
-})
+// })

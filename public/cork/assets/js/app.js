@@ -185,7 +185,7 @@ var App = function() {
             if ( windowWidth > MediaSize.md ) {
                 toggleFunction.search();
                 inBuiltfunctionality.closeDropdownDocumentClick();
-                console.log('On Desktop Refresh');
+                // console.log('On Desktop Refresh');
                 desktopFunctions.preventAccordionOnClick();
             }
         },
@@ -197,7 +197,7 @@ var App = function() {
                     toggleFunction.search();
                     toggleFunction.deactivateScroll();
                     inBuiltfunctionality.closeDropdownDocumentClick();
-                    console.log('On Desktop Resize');
+                    // console.log('On Desktop Resize');
                 }
             });
         }

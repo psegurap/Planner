@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css?family=Quicksand:400,500,600,700&display=swap" rel="stylesheet">
     <link href="{{asset('/cork/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('/cork/assets/css/plugins.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('/css/jquery.toast.css')}}" rel="stylesheet" type="text/css" />
     <!-- END GLOBAL MANDATORY STYLES -->
 
     
@@ -793,10 +794,19 @@
     <script src="{{asset('/cork/bootstrap/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('/cork/plugins/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
     <script src="{{asset('/cork/assets/js/app.js')}}"></script>
+    <script src="{{asset('/js/vue.js')}}"></script>
+    <script src="{{asset('/js/vee-validate.js')}}"></script>
+    <script src="{{asset('/js/axios.js')}}"></script>
+    <script src="{{asset('/js/jquery.toast.js')}}"></script>
+    <script src="{{asset('/js/sweetalert.min.js')}}"></script>
+    <script src="{{asset('/js/loadingoverlay.js')}}"></script>
+    
     <script>
         $(document).ready(function() {
             App.init();
         });
+
+        var homepath = "{{url('/')}}";
     </script>
     <script src="{{asset('/cork/assets/js/custom.js')}}"></script>
     <!-- END GLOBAL MANDATORY SCRIPTS -->

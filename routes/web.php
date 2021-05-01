@@ -19,9 +19,18 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return view('home');
     })->name('home');
 
-    Route::get('/incomes', function(){
-        return view('incomes');
-    })->name('incomes');
+    Route::group(['prefix' => 'incomes'], function(){
+        Route::get('/', 'IncomeController@incomes')->name('incomes');
+        Route::post('/add_income', 'IncomeController@add_income');
+        Route::post('/update_income', 'IncomeController@update_income');
+        Route::post('/delete_income/{id}', 'IncomeController@delete_income');
+        
+       
+    });
+
+    // Route::get('/incomes', function(){
+    //     return view('incomes');
+    // })->name('incomes');
 
     Route::get('/bills', function(){
         return view('bills');
