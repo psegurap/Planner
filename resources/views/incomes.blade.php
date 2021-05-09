@@ -10,6 +10,8 @@
     <link href="{{asset('/cork/plugins/sweetalerts/sweetalert2.min.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('/cork/plugins/sweetalerts/sweetalert.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('/cork/assets/css/components/custom-sweetalert.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('/cork/plugins/flatpickr/flatpickr.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('/cork/plugins/flatpickr/custom-flatpickr.css')}}" rel="stylesheet" type="text/css" />
     
     <!-- END PAGE LEVEL STYLES -->
 
@@ -17,6 +19,14 @@
         #income-form{
             max-width: 100%;
             flex: 0 0 100%;
+        }
+
+        .income-title {
+            font-size: 16px;
+            font-weight: 500;
+            color: #61b6cd;
+            margin-bottom: 0px;
+            letter-spacing: 0px;
         }
     </style>
 @endsection
@@ -49,7 +59,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <input data-vv-scope="add-income" name="name" v-model="new_income.name" :disabled="sending" v-validate="'required|max:25'" type="text" placeholder="Name:" class="form-control">
+                                                        <input data-vv-scope="add-income" name="name" v-model="new_income.name" :disabled="sending" v-validate="'required|max:25'" type="text" placeholder="Name:" class="form-control text-white">
                                                         <span class="text-danger" style="font-size: 12px;" v-show="errors.has('add-income.name')">* @{{ errors.first('add-income.name') }}</span>
                                                     </div>
                                                 </div>
@@ -59,7 +69,7 @@
                                                             <div class="input-group-prepend">
                                                               <span class="input-group-text">$</span>
                                                             </div>
-                                                            <input data-vv-scope="add-income" name="expected amount" type="text" :disabled="sending" v-validate="'required|decimal:2|max:15'" v-model="new_income.amount_expected" placeholder="Amount expected:" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                                            <input data-vv-scope="add-income" name="expected amount" type="text" :disabled="sending" v-validate="'required|decimal:2|max:15'" v-model="new_income.amount_expected" placeholder="Amount expected:" class="form-control text-white" aria-label="Amount (to the nearest dollar)">
                                                             <div class="input-group-append">
                                                                 <span class="input-group-text">.00</span>
                                                             </div>
@@ -69,7 +79,7 @@
                                                 </div>
                                                 <div class="col-md-12">
                                                     <div class="form-group">
-                                                        <textarea data-vv-scope="add-income" v-validate="'max:150'" :disabled="sending" name="description" style="max-height: 200px;" v-model="new_income.description " placeholder="Description (optional):" name="" id="" cols="30" rows="5" class="form-control"></textarea>
+                                                        <textarea data-vv-scope="add-income" v-validate="'max:150'" :disabled="sending" name="description" style="max-height: 200px;" v-model="new_income.description " placeholder="Description (optional):" name="" id="" cols="30" rows="5" class="form-control text-white"></textarea>
                                                         <span class="text-danger" style="font-size: 12px;" v-show="errors.has('add-income.description')">* @{{ errors.first('add-income.description') }}</span>
                                                     </div>
                                                 </div>
@@ -142,8 +152,13 @@
                                                 <div class="mt-2">
                                                     <ul class="list-group">
                                                         <li class="list-group-item text-white mb-1">Expected: $@{{income.expected_amount}}</li>
-                                                        <li class="list-group-item text-white mb-1">Current: $</li>
-                                                        <li class="list-group-item text-white">Difference: $</li>
+                                                        {{-- <li class="list-group-item text-white mb-1">Current: $@{{Math.round((income.current_addition + Number.EPSILON) * 100) / 100}}</li> --}}
+                                                        <li class="list-group-item text-white mb-1">Current: $@{{income.current_addition}}</li>
+                                                        <li class="list-group-item text-white">Difference: 
+                                                            <span v-if="income.difference > 0" class="text-success" >$@{{income.difference}}</span>
+                                                            <span v-else-if="income.difference < 0" class="text-danger">$@{{income.difference}}</span>
+                                                            <span v-else>$@{{income.difference}}</span>
+                                                        </li>
                                                     </ul>
                                                 </div>
                                                 {{-- <p class="meta-time">11/01/2020</p>
@@ -163,7 +178,7 @@
                                                     {{-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2 delete-note"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg> --}}
                                                 </div>
                                                 <div class="note-action">
-                                                    <span class="badge link-badge-success">
+                                                    <span @click="AddTransaction(income.id)" class="badge link-badge-success">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-circle"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
                                                         {{-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg> --}}
                                                     </span>
@@ -191,6 +206,7 @@
                         </div>
 
                         <!-- Modal -->
+                        <!-- EDIT INCOME -->
                         <div class="modal fade" id="incomeModal" tabindex="-1" role="dialog" aria-labelledby="notesMailModalTitle" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
@@ -202,7 +218,7 @@
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <div class="form-group">
-                                                                <input :disabled="sending" id="n-title" name="name" v-model="edit_income.name" v-validate="'required|max:25'" type="text" placeholder="Name:" class="form-control">
+                                                                <input :disabled="sending" id="n-title" name="name" v-model="edit_income.name" v-validate="'required|max:25'" type="text" placeholder="Name:" class="form-control text-white">
                                                                 <span class="text-danger" style="font-size: 12px;" v-show="errors.has('edit-income.name')">* @{{ errors.first('edit-income.name') }}</span>
                                                             </div>
                                                         </div>
@@ -212,7 +228,7 @@
                                                                     <div class="input-group-prepend">
                                                                       <span class="input-group-text">$</span>
                                                                     </div>
-                                                                    <input :disabled="sending" id="n-amount-expected" name="expected amount" type="text" v-validate="'required|decimal:2|max:15'" v-model="edit_income.amount_expected" placeholder="Amount expected:" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                                                    <input :disabled="sending" id="n-amount-expected" name="expected amount" type="text" v-validate="'required|decimal:2|max:15'" v-model="edit_income.amount_expected" placeholder="Amount expected:" class="form-control text-white" aria-label="Amount (to the nearest dollar)">
                                                                 </div>
                                                                 <span class="text-danger" style="font-size: 12px;" v-show="errors.has('edit-income.expected amount')">* @{{ errors.first('edit-income.expected amount') }}</span>
                                                             </div>
@@ -220,7 +236,7 @@
 
                                                         <div class="col-md-12">
                                                             <div class="form-group">
-                                                                <textarea :disabled="sending" v-validate="'max:150'" name="description" style="max-height: 200px;" v-model="edit_income.description " placeholder="Description (optional):" name="" id="" cols="30" rows="5" class="form-control"></textarea>
+                                                                <textarea :disabled="sending" v-validate="'max:150'" name="description" style="max-height: 200px;" v-model="edit_income.description " placeholder="Description (optional):" cols="30" rows="5" class="form-control text-white"></textarea>
                                                                 <span class="text-danger" style="font-size: 12px;" v-show="errors.has('edit-income.description')">* @{{ errors.first('edit-income.description') }}</span>
                                                             </div>
                                                         </div>
@@ -233,6 +249,67 @@
                                     <div class="modal-footer">
                                         <span v-if="sending" class="spinner-border text-light align-self-center loader-sm"></span>
                                         <button id="btn-n-save" @click="validate(UpdateIncome, 'edit-income')" class="float-left btn">Update</button>
+                                        <button class="btn" data-dismiss="modal">Cancel</button>
+                                        {{-- <button id="btn-n-add" class="btn">Add</button> --}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ADD TRANSACTION -->
+                        <div class="modal fade" id="transactionModal" tabindex="-1" role="dialog" aria-labelledby="notesMailModalTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-body pb-0">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x close" data-dismiss="modal"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                                        <div class="notes-box">
+                                            <div class="notes-content">                                                                        
+                                                <form action="javascript:void(0);"  data-vv-scope="add-transaction">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div>
+                                                                <p class="income-title text-uppercase">@{{transaction.income_name}}</p>
+                                                            </div>
+                                                            <hr class="border border-success mt-3">
+                                                        </div>
+
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <input v-model="transaction.date" name="date" v-validate="'required'" id="transactionDate" class="form-control flatpickr active text-white" type="text" placeholder="Select Date:">
+                                                                {{-- <input :disabled="sending" name="name" v-model="edit_income.name" v-validate="'required|max:25'" type="text" placeholder="Name:" class="form-control text-white"> --}}
+                                                                <span class="text-danger" style="font-size: 12px;" v-show="errors.has('add-transaction.date')">* @{{ errors.first('add-transaction.date') }}</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                      <span class="input-group-text">$</span>
+                                                                    </div>
+                                                                    <input v-model="transaction.amount" :disabled="sending" name="amount" type="text" v-validate="'required|decimal:2|max:15'" placeholder="Amount:" class="form-control text-white" aria-label="Amount (to the nearest dollar)">
+                                                                    <div class="input-group-append">
+                                                                        <span class="input-group-text">.00</span>
+                                                                    </div>
+                                                                </div>
+                                                                <span class="text-danger" style="font-size: 12px;" v-show="errors.has('add-transaction.amount')">* @{{ errors.first('add-transaction.amount') }}</span>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <textarea v-model="transaction.description" :disabled="sending" v-validate="'max:150'" name="description" style="max-height: 200px;" placeholder="Description (optional):" cols="30" rows="5" class="form-control text-white"></textarea>
+                                                                <span class="text-danger" style="font-size: 12px;" v-show="errors.has('add-transaction.description')">* @{{ errors.first('add-transaction.description') }}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <span v-if="sending" class="spinner-border text-light align-self-center loader-sm"></span>
+                                        <button id="btn-n-save" @click="validate(SaveTransaction, 'add-transaction')" class="float-left btn">Add Transaction</button>
                                         <button class="btn" data-dismiss="modal">Cancel</button>
                                         {{-- <button id="btn-n-add" class="btn">Add</button> --}}
                                     </div>
@@ -256,6 +333,8 @@
     <!-- BEGIN PAGE LEVEL SCRIPTS -->
     <script src="{{asset('/cork/assets/js/ie11fix/fn.fix-padStart.js')}}"></script>
     <script src="{{asset('/cork/assets/js/apps/notes.js')}}"></script>
+    <script src="{{asset('/cork/plugins/flatpickr/flatpickr.js')}}"></script>
+    <script src="{{asset('/cork/plugins/flatpickr/flatpickr.js')}}"></script>
     <!-- END PAGE LEVEL SCRIPTS -->
 
     <script>

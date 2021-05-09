@@ -24,15 +24,30 @@ $(document).ready(function(){
                 name : '',
                 amount_expected : '',
                 description : ''
-            }
+            },
+            transaction : {
+                date : "",
+                amount : "",
+                description : "",
+                income_name : ""
+            },
+            transaction_income_id : null,  
         },
         watch: {
             EditingIncomeId: function(val){
-                let income = val[0]
-                this.edit_income.name = income.name;
-                this.edit_income.amount_expected = income.expected_amount;
-                this.edit_income.description = income.description
-                // console.log(val)
+                let income = val[0];
+                if(typeof income !== 'undefined'){
+                    this.edit_income.name = income.name;
+                    this.edit_income.amount_expected = income.expected_amount;
+                    this.edit_income.description = income.description
+                }
+            },
+            TransactionIncomeId: function(val){
+                let income = val[0];
+                if(typeof income !== 'undefined'){
+                    this.transaction.income_name = income.name;
+                }
+
             }
         },
         computed : {
@@ -41,15 +56,25 @@ $(document).ready(function(){
                 return this.incomes.filter(function(income){
                     return income.id == _this.editing_income_id;
                 });
+            },
+            TransactionIncomeId: function(){
+                var _this = this;
+                return this.incomes.filter(function(income){
+                    return income.id == _this.transaction_income_id;
+                });
             }
         },
         mounted: function(){
             console.log("<-- Ready -->");
 
+            var datePicker = flatpickr(document.getElementById('transactionDate'), {
+                dateFormat: "Y-m-d"
+            });
             
-            // console.log(incomes)
+            // console.log()
         },
         methods:{
+            //BEGIN INCOME FUNCTIONS 
             AddIncome: function(){
                 var _this = this;
                 this.sending = true;
@@ -141,8 +166,45 @@ $(document).ready(function(){
                     }
                   })
             },
+            // -------------- END INCOME FUNCTIONS 
+
+            // -------------- BEGIN TRANSACTION FUNCTIONS 
+            AddTransaction: function(id){
+                $('#transactionModal').modal('show');
+                this.transaction_income_id = id;
+            },
+            SaveTransaction: function(){
+                var _this = this;
+                this.sending = true;
+                axios.post(homepath + '/incomes/transaction/add', {income_id : this.transaction_income_id, transaction : this.transaction}).then(function(response){
+                    _this.incomes = response.data;
+                    _this.sending = false;
+                    _this.transaction.date = '';
+                    _this.transaction.amount = '';
+                    _this.transaction.description = '';
+                    $('#transactionModal').modal('hide');
+                    swal({
+                        title: 'Success!',
+                        text: "Transaction successfully added!",
+                        type: 'success',
+                        padding: '2em',
+                    }).then(function(){
+                        _this.errors.clear();
+                        // window.location.reload();
+                    });
+                }).catch(function(error){
+                    _this.sending = false;
+                    toast({
+                        type: 'error',
+                        title: 'An error has occurred.',
+                        padding: '2em',
+                    })
+                    console.log(error);
+                })
+            },
+            // -------------- END TRANSACTION FUNCTIONS 
+
             validate: function(callback, scope){
-                console.log(callback, scope)
                 var _this = this;
                 this.$validator.validateAll(scope).then(function(result){
                     if(result){

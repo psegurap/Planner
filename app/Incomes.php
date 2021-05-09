@@ -12,4 +12,8 @@ class Incomes extends Model
     protected $table = 'incomes';
     protected $guarded = [];
     protected $dates = ['deleted_at'];
+
+    public function transactions(){
+        return $this->hasMany('App\IncomeTransaction', 'income_id', 'id');   
+    }
 }

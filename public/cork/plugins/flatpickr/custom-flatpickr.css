@@ -17,7 +17,8 @@
   background: #1b2e4b; }
   .flatpickr-calendar.open {
     display: inline-block;
-    z-index: 900; }
+    /* z-index: 900;  */
+  }
   .flatpickr-calendar.arrowTop:before {
     border-bottom-color: #1b2e4b; }
   .flatpickr-calendar.arrowBottom:before {

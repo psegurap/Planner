@@ -25,7 +25,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::post('/update_income', 'IncomeController@update_income');
         Route::post('/delete_income/{id}', 'IncomeController@delete_income');
         
-       
+        Route::group(['prefix' => 'transaction'], function(){
+            Route::post('/add', 'IncomeController@add_transaction');
+        });
+    
     });
 
     // Route::get('/incomes', function(){
