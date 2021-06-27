@@ -31,6 +31,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     
     });
 
+    Route::group(['prefix' => 'transactions'], function(){
+        Route::get('/', 'TransactionController@transactions')->name('transactions');
+    });
+
     // Route::get('/incomes', function(){
     //     return view('incomes');
     // })->name('incomes');
