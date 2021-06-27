@@ -35,9 +35,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     //     return view('incomes');
     // })->name('incomes');
 
-    Route::get('/bills', function(){
-        return view('bills');
-    })->name('bills');
+    Route::get('/expenses', function(){
+        return view('expenses');
+    })->name('expenses');
 
     Route::get('/subscriptions', function(){
         return view('subscriptions');
