@@ -13,7 +13,9 @@ $(document).ready(function(){
         el: '#content',
         data : {
             incomes : incomes,
+            transactions: transactions,
             sending : false,
+            moment : moment,
             new_income : {
                 name : '',
                 amount_expected : '',
@@ -70,8 +72,6 @@ $(document).ready(function(){
             var datePicker = flatpickr(document.getElementById('transactionDate'), {
                 dateFormat: "Y-m-d"
             });
-            
-            // console.log()
         },
         methods:{
             //BEGIN INCOME FUNCTIONS 
@@ -177,7 +177,8 @@ $(document).ready(function(){
                 var _this = this;
                 this.sending = true;
                 axios.post(homepath + '/incomes/transaction/add', {income_id : this.transaction_income_id, transaction : this.transaction}).then(function(response){
-                    _this.incomes = response.data;
+                    _this.incomes = response.data.incomes;
+                    _this.transactions = response.data.transactions;
                     _this.sending = false;
                     _this.transaction.date = '';
                     _this.transaction.amount = '';

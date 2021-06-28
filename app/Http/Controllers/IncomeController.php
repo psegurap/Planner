@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Support\Carbon;
 use App\Incomes;
 use App\IncomeTransaction;
 
@@ -17,7 +18,10 @@ class IncomeController extends Controller
     public function incomes(){
 
         $incomes = $this->incomes_calculated_info();
-        return view('incomes', compact('incomes'));
+        $transactions = IncomeTransaction::with('income')->orderBy('date', 'desc')->get()->groupBy(function($item){
+            return $item->date;
+        });
+        return view('incomes', compact('incomes', 'transactions'));
     }
 
     public function add_income(Request $request){
@@ -51,6 +55,7 @@ class IncomeController extends Controller
 
     public function delete_income($id){
         Incomes::where('id', $id)->delete();
+        IncomeTransaction::where('income_id', $id)->where('user_id', Auth::user()->id)->delete();
         $incomes = $this->incomes_calculated_info();
         
         return $incomes;
@@ -97,9 +102,12 @@ class IncomeController extends Controller
 
         IncomeTransaction::create($transaction_info);
 
+        $transactions = IncomeTransaction::with('income')->orderBy('date', 'desc')->get()->groupBy(function($item){
+            return $item->date;
+        });
         $incomes = $this->incomes_calculated_info();
         
-        return $incomes;
+        return ['incomes' => $incomes, 'transactions' => $transactions];
     }
     
     // -------------- End Income Transaction Table Functions

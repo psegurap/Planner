@@ -12,7 +12,9 @@
     <link href="{{asset('/cork/assets/css/components/custom-sweetalert.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('/cork/plugins/flatpickr/flatpickr.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('/cork/plugins/flatpickr/custom-flatpickr.css')}}" rel="stylesheet" type="text/css" />
-    
+    <link href="{{asset('cork/plugins/jquery-ui/jquery-ui.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('cork/assets/css/apps/contacts.css')}}" rel="stylesheet" type="text/css" />
+
     <!-- END PAGE LEVEL STYLES -->
 
     <style>
@@ -28,6 +30,27 @@
             margin-bottom: 0px;
             letter-spacing: 0px;
         }
+
+        .searchable-items .items .item-content .amount-plus p{
+            color: #04b104;
+            font-weight: bold;
+        }
+
+        .searchable-items .date-container .date{
+            font-size: large;
+            font-weight: bold;
+        }
+
+        .searchable-container .searchable-items.list .items .item-content{
+            min-width: 100%
+        }
+
+        @media (max-width: 767px){
+            .searchable-container .searchable-items.list .items{
+                min-width: 100%;
+            }
+        }
+
     </style>
 @endsection
 
@@ -99,51 +122,8 @@
             <div class="col-lg-12">
                 <div class="app-container">
                     <div class="app-note-container">
-
                         <div class="app-note-overlay"></div>
-
-                        {{-- <div class="tab-title">
-                            <div class="row">
-                                <div class="col-md-12 col-sm-12 col-12 text-center">
-                                    <a id="btn-add-notes" class="btn btn-primary" href="javascript:void(0);">Add</a>
-                                </div>
-                                <div class="col-md-12 col-sm-12 col-12 mt-5">
-                                    <ul class="nav nav-pills d-block" id="pills-tab3" role="tablist">
-                                        <li class="nav-item">
-                                            <a class="nav-link list-actions active" id="all-notes"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg> All Notes</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link list-actions" id="note-fav"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg> Favourites</a>
-                                        </li>
-                                    </ul>
-
-                                    <hr/>
-
-                                    <p class="group-section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg> Tags</p>
-
-                                    <ul class="nav nav-pills d-block group-list" id="pills-tab" role="tablist">
-                                        <li class="nav-item">
-                                            <a class="nav-link list-actions g-dot-primary" id="note-personal">Personal</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link list-actions g-dot-warning" id="note-work">Work</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link list-actions g-dot-success" id="note-social">Social</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link list-actions g-dot-danger" id="note-important">Important</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div> --}}
-
-
                         <div id="ct" class="note-container note-grid">
-                            
-
-                            
                             <div v-for="income in incomes" class="note-item all-notes note-personal">
                                 <div class="border-success note-inner-content">
                                     <div class="note-content">
@@ -160,10 +140,6 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        {{-- <p class="meta-time">11/01/2020</p>
-                                        <div class="note-description-content">
-                                            <p class="note-description" data-noteDescription="Curabitur facilisis vel elit sed dapibus sodales purus rhoncus.">Curabitur facilisis vel elit sed dapibus sodales purus rhoncus.</p>
-                                        </div> --}}
                                     </div>
                                     <div class="d-flex justify-content-between">
                                         <div class="note-action">
@@ -183,27 +159,11 @@
                                             </span>
                                         </div>
                                     </div>
-                                    {{-- <div class="note-footer">
-                                        <div class="tags-selector btn-group">
-                                            <a class="nav-link dropdown-toggle d-icon label-group" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">
-                                                <div class="tags">
-                                                    <span class="badge link-badge-primary">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-circle"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                                                    </span>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div> --}}
                                 </div>
                             </div>
-
                         </div>
-
                     </div>
-                    
                 </div>
-
                 <!-- Modal -->
                 <!-- EDIT INCOME -->
                 <div class="modal fade" id="incomeModal" tabindex="-1" role="dialog" aria-labelledby="notesMailModalTitle" aria-hidden="true">
@@ -235,7 +195,7 @@
 
                                                 <div class="col-md-12">
                                                     <div class="form-group">
-                                                        <textarea :disabled="sending" v-validate="'max:150'" name="description" style="max-height: 200px;" v-model="edit_income.description " placeholder="Description (optional):" cols="30" rows="5" class="form-control text-white"></textarea>
+                                                        <textarea :disabled="sending" v-validate="'max:150|required'" name="description" style="max-height: 200px;" v-model="edit_income.description " placeholder="Description:" cols="30" rows="5" class="form-control text-white"></textarea>
                                                         <span class="text-danger" style="font-size: 12px;" v-show="errors.has('edit-income.description')">* @{{ errors.first('edit-income.description') }}</span>
                                                     </div>
                                                 </div>
@@ -296,7 +256,7 @@
 
                                                 <div class="col-md-12">
                                                     <div class="form-group">
-                                                        <textarea v-model="transaction.description" :disabled="sending" v-validate="'max:150'" name="description" style="max-height: 200px;" placeholder="Description (optional):" cols="30" rows="5" class="form-control text-white"></textarea>
+                                                        <textarea v-model="transaction.description" :disabled="sending" v-validate="'max:150|required'" name="description" style="max-height: 200px;" placeholder="Description:" cols="30" rows="5" class="form-control text-white"></textarea>
                                                         <span class="text-danger" style="font-size: 12px;" v-show="errors.has('add-transaction.description')">* @{{ errors.first('add-transaction.description') }}</span>
                                                     </div>
                                                 </div>
@@ -315,7 +275,36 @@
                         </div>
                     </div>
                 </div>
-                
+            </div>
+            <!------- Transactions List --------->
+            <div class="col-lg-12">
+                <div class="widget-content searchable-container list">
+                    <div class="searchable-items list">
+                        <div v-for="(transaction, key) in transactions" class="loop-container">
+                            <div class="date-container">
+                                <p class="date">@{{moment(key).format("MMM Do")}}</p>
+                            </div>
+                            <div v-for="single_transaction in transaction" class="items">
+                                <div class="item-content">
+                                    <div>
+                                        <div class="user-location amount-plus">
+                                            <p>@{{single_transaction.amount}}</p>
+                                            <span> - @{{single_transaction.income.name}}</span>
+                                        </div>
+                                        <div class="user-location">
+                                            <p>@{{single_transaction.description}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="action-btn">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 edit"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>    
         </div>
     </div>
         
@@ -337,6 +326,7 @@
 
     <script>
         var incomes = {!! json_encode($incomes) !!};
+        var transactions = {!! json_encode($transactions) !!};
 
     </script>
     <!-- Begin Custom Files -->

@@ -2,17 +2,18 @@
 {{-- {{dd(session()->all())}} --}}
 @section('title') Transactions @endsection
 @section('styles')
-    <link rel="stylesheet" type="text/css" href="{{asset('cork/assets/css/forms/theme-checkbox-radio.css')}}">
     <link href="{{asset('cork/plugins/jquery-ui/jquery-ui.min.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('cork/assets/css/apps/contacts.css')}}" rel="stylesheet" type="text/css" />
 
     <style>
         .searchable-items .items .item-content .amount-less p{
-            color: red
+            color: red;
+            font-weight: bold;
         }
 
         .searchable-items .items .item-content .amount-plus p{
-            color: #01ff01
+            color: #04b104;
+            font-weight: bold;
         }
 
         .searchable-items .date-container .date{
@@ -146,12 +147,14 @@
                         </div>
                         <div class="items">
                             <div class="item-content">
-                                <div class="user-location amount-less">
-                                    <p >-962.99</p>
-                                </div>
-                                <div class="user-location">
-                                    <p>Assumenda iusto dolorem vero.</p>
-                                </div>
+                               <div>
+                                    <div class="user-location amount-less">
+                                        <p >-962.99</p>
+                                    </div>
+                                    <div class="user-location">
+                                        <p>Assumenda iusto dolorem vero.</p>
+                                    </div>
+                               </div>
                                 <div class="action-btn">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 edit"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
                                 </div>
@@ -159,11 +162,13 @@
                         </div>
                         <div class="items">
                             <div class="item-content">
-                                <div class="user-location amount-less">
-                                    <p >-953.62</p>
-                                </div>
-                                <div class="user-location">
-                                    <p>Assumenda iusto dolorem vero.</p>
+                                <div>
+                                    <div class="user-location amount-less">
+                                        <p >-953.62</p>
+                                    </div>
+                                    <div class="user-location">
+                                        <p>Assumenda iusto dolorem vero.</p>
+                                    </div>
                                 </div>
                                 <div class="action-btn">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 edit"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
@@ -175,11 +180,13 @@
                         </div>
                         <div class="items">
                             <div class="item-content">
-                                <div class="user-location amount-less">
-                                    <p >-381.9</p>
-                                </div>
-                                <div class="user-location">
-                                    <p>Assumenda iusto dolorem vero.</p>
+                                <div>
+                                    <div class="user-location amount-less">
+                                        <p >-381.9</p>
+                                    </div>
+                                    <div class="user-location">
+                                        <p>Assumenda iusto dolorem vero.</p>
+                                    </div>
                                 </div>
                                 <div class="action-btn">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 edit"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
@@ -191,24 +198,13 @@
                         </div>
                         <div class="items">
                             <div class="item-content">
-                                <div class="user-location amount-plus">
-                                    <p >802.94</p>
-                                </div>
-                                <div class="user-location">
-                                    <p>Assumenda iusto dolorem vero.</p>
-                                </div>
-                                <div class="action-btn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 edit"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="items">
-                            <div class="item-content">
-                                <div class="user-location amount-less">
-                                    <p >-617.98</p>
-                                </div>
-                                <div class="user-location">
-                                    <p>Assumenda iusto dolorem vero.</p>
+                                <div>
+                                    <div class="user-location amount-plus">
+                                        <p >802.94</p>
+                                    </div>
+                                    <div class="user-location">
+                                        <p>Assumenda iusto dolorem vero.</p>
+                                    </div>
                                 </div>
                                 <div class="action-btn">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 edit"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
@@ -217,11 +213,28 @@
                         </div>
                         <div class="items">
                             <div class="item-content">
-                                <div class="user-location amount-less">
-                                    <p >-700.3</p>
+                                <div>
+                                    <div class="user-location amount-less">
+                                        <p >-617.98</p>
+                                    </div>
+                                    <div class="user-location">
+                                        <p>Assumenda iusto dolorem vero.</p>
+                                    </div>
                                 </div>
-                                <div class="user-location">
-                                    <p>Assumenda iusto dolorem vero.</p>
+                                <div class="action-btn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 edit"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="items">
+                            <div class="item-content">
+                                <div>
+                                    <div class="user-location amount-less">
+                                        <p >-700.3</p>
+                                    </div>
+                                    <div class="user-location">
+                                        <p>Assumenda iusto dolorem vero.</p>
+                                    </div>
                                 </div>
                                 <div class="action-btn">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 edit"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>

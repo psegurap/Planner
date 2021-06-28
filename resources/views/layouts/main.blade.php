@@ -814,6 +814,7 @@
     <script src="{{asset('/js/jquery.toast.js')}}"></script>
     <script src="{{asset('/js/sweetalert.min.js')}}"></script>
     <script src="{{asset('/js/loadingoverlay.js')}}"></script>
+    <script src="{{asset('/js/moment.js')}}"></script>
     
     <script>
         $(document).ready(function() {
