@@ -31,17 +31,21 @@ Route::middleware(['auth', 'verified'])->group(function () {
     
     });
 
+    Route::group(['prefix' => 'expenses'], function(){
+        Route::get('/', 'ExpenseController@expenses')->name('expenses');
+        Route::post('/add_income', 'ExpenseController@add_expense');
+        Route::post('/update_income', 'ExpenseController@update_expense');
+        Route::post('/delete_income/{id}', 'ExpenseController@delete_expense');
+        
+        Route::group(['prefix' => 'transaction'], function(){
+            Route::post('/add', 'ExpenseController@add_transaction');
+        });
+    
+    });
+
     Route::group(['prefix' => 'transactions'], function(){
         Route::get('/', 'TransactionController@transactions')->name('transactions');
     });
-
-    // Route::get('/incomes', function(){
-    //     return view('incomes');
-    // })->name('incomes');
-
-    Route::get('/expenses', function(){
-        return view('expenses');
-    })->name('expenses');
 
     Route::get('/subscriptions', function(){
         return view('subscriptions');
