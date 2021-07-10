@@ -12,7 +12,7 @@ $(document).ready(function(){
     expenses = new Vue({
         el: '#content',
         data : {
-            expenses : [],
+            expenses : expenses,
             transactions: [],
             sending : false,
             moment : moment,
@@ -68,7 +68,6 @@ $(document).ready(function(){
         },
         mounted: function(){
             console.log("<-- Ready -->");
-
             var datePicker = flatpickr(document.getElementById('transactionDate'), {
                 dateFormat: "Y-m-d"
             });

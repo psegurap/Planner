@@ -5,24 +5,24 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use Illuminate\Support\Carbon;
-use App\Expense;
+use App\Expenses;
 // use App\IncomeTransaction;
 
 class ExpenseController extends Controller
 {
-        // ------------ Begin Income Table Functions
+        // ------------ Begin Expenses Table Functions
 
         public function expenses(){
 
-            // $incomes = $this->expenses_calculated_info();
+            $expenses = $this->expenses_calculated_info();
             // $transactions = IncomeTransaction::with('income')->orderBy('date', 'desc')->get()->groupBy(function($item){
             //     return $item->date;
             // });
-            // return view('expense', compact('incomes', 'transactions'));
-            return view('expenses');
+            // return view('expenses', compact('expenses', 'transactions'));
+            return view('expenses', compact('expenses'));
         }
     
-        public function add_income(Request $request){
+        public function add_expense(Request $request){
     
             $coming_info = $request->expense_info;
             $income_data = [
@@ -32,7 +32,7 @@ class ExpenseController extends Controller
                 'user_id' => Auth::user()->id
             ];
     
-            Expense::create($income_data);
+            Expenses::create($income_data);
             $expenses = $this->expenses_calculated_info();
             return $expenses;
         }
@@ -60,26 +60,26 @@ class ExpenseController extends Controller
         }
     
         public function expenses_calculated_info (){
-            $incomes = Incomes::with(['transactions'])->where('user_id', Auth::user()->id)->get();
+            $expenses = Expenses::with(['transactions'])->where('user_id', Auth::user()->id)->get();
             
-            //mapping to calculate the transactions made to the income
-            $incomes = $incomes->map(function($income){
-                $income['current_addition'] = 0;
-                foreach ($income['transactions'] as $transaction) {
-                    $income['current_addition'] += $transaction['amount'];
+            //mapping to calculate the transactions made to the expense
+            $expenses = $expenses->map(function($expense){
+                $expense['current_addition'] = 0;
+                foreach ($expense['transactions'] as $transaction) {
+                    $expense['current_addition'] += $transaction['amount'];
                 }
-                $income['current_addition'] = round($income['current_addition'], 2);
-                return $income;
+                $expense['current_addition'] = round($expense['current_addition'], 2);
+                return $expense;
             });
             //mapping to calculate difference between transaction added to amount expected
-            $incomes = $incomes->map(function($income){
-                $income['difference'] = 0;
-                $income['difference']  = ($income['current_addition'] - $income['expected_amount']);
-                $income['difference'] = round($income['difference'], 2);
-                return $income;
+            $expenses = $expenses->map(function($expense){
+                $expense['difference'] = 0;
+                $expense['difference']  = ($expense['current_addition'] - $expense['expected_amount']);
+                $expense['difference'] = round($expense['difference'], 2);
+                return $expense;
             });
     
-            return $incomes;
+            return $expenses;
         }
     
         // -------------- End Income Table Functions

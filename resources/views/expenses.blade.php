@@ -72,7 +72,7 @@
                     <div class="app-note-container">
                         <div class="note-container  note-grid">
                             <div class="note-item all-notes note-personal" id="expense-form">
-                                <div class="note-inner-content rounded border-success">
+                                <div class="note-inner-content rounded border-danger">
                                     <div class="row mb-2" >
                                         <div class="col-12">
                                             <p class="d-flex justify-content-between mb-3 note-title">
@@ -113,7 +113,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <hr class="border border-info">
+                                <hr class="border border-white">
                             </div>
                         </div>
                     </div>
@@ -125,7 +125,7 @@
                         <div class="app-note-overlay"></div>
                         <div id="ct" class="note-container note-grid">
                             <div v-for="expense in expenses" class="note-item all-notes note-personal">
-                                <div class="border-success note-inner-content">
+                                <div class="border-danger note-inner-content">
                                     <div class="note-content">
                                         <p class="note-title" data-noteTitle="Meeting with Kelly">@{{expense.name}}</p>
                                         <div class="mt-2">
@@ -224,7 +224,7 @@
                                                     <div>
                                                         <p class="expense-title text-uppercase">@{{transaction.expense_name}}</p>
                                                     </div>
-                                                    <hr class="border border-success mt-3">
+                                                    <hr class="border border-danger mt-3">
                                                 </div>
 
                                                 <div class="col-md-6">
@@ -318,8 +318,8 @@
     <!-- END PAGE LEVEL SCRIPTS -->
 
     <script>
-        {{-- var expensess = {!! json_encode($expenses) !!};
-        var transactions = {!! json_encode($transactions) !!};  --}}
+        var expenses = {!! json_encode($expenses) !!};
+        {{-- var transactions = {!! json_encode($transactions) !!};  --}}
 
     </script>
     <!-- Begin Custom Files -->

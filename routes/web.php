@@ -33,7 +33,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::group(['prefix' => 'expenses'], function(){
         Route::get('/', 'ExpenseController@expenses')->name('expenses');
-        Route::post('/add_income', 'ExpenseController@add_expense');
+        Route::post('/add_expense', 'ExpenseController@add_expense');
         Route::post('/update_income', 'ExpenseController@update_expense');
         Route::post('/delete_income/{id}', 'ExpenseController@delete_expense');
         
