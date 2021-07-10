@@ -31,7 +31,8 @@
             letter-spacing: 0px;
         }
 
-        .searchable-items .items .item-content .amount-plus p{
+        .searchable-items .items .item-content .amount-plus span.amount{
+            display: block;
             color: #04b104;
             font-weight: bold;
         }
@@ -195,7 +196,7 @@
 
                                                 <div class="col-md-12">
                                                     <div class="form-group">
-                                                        <textarea :disabled="sending" v-validate="'max:150|required'" name="description" style="max-height: 200px;" v-model="edit_income.description " placeholder="Description:" cols="30" rows="5" class="form-control text-white"></textarea>
+                                                        <textarea :disabled="sending" v-validate="'max:150'" name="description" style="max-height: 200px;" v-model="edit_income.description " placeholder="Description:" cols="30" rows="5" class="form-control text-white"></textarea>
                                                         <span class="text-danger" style="font-size: 12px;" v-show="errors.has('edit-income.description')">* @{{ errors.first('edit-income.description') }}</span>
                                                     </div>
                                                 </div>
@@ -256,7 +257,7 @@
 
                                                 <div class="col-md-12">
                                                     <div class="form-group">
-                                                        <textarea v-model="transaction.description" :disabled="sending" v-validate="'max:150|required'" name="description" style="max-height: 200px;" placeholder="Description:" cols="30" rows="5" class="form-control text-white"></textarea>
+                                                        <textarea v-model="transaction.description" :disabled="sending" v-validate="'max:150'" name="description" style="max-height: 200px;" placeholder="Description:" cols="30" rows="5" class="form-control text-white"></textarea>
                                                         <span class="text-danger" style="font-size: 12px;" v-show="errors.has('add-transaction.description')">* @{{ errors.first('add-transaction.description') }}</span>
                                                     </div>
                                                 </div>
@@ -288,11 +289,11 @@
                                 <div class="item-content">
                                     <div>
                                         <div class="user-location amount-plus">
-                                            <p>@{{single_transaction.amount}}</p>
-                                            <span> - @{{single_transaction.income.name}}</span>
+                                            <span class="amount">@{{single_transaction.amount}}</span>
+                                            <span class="text-white"> - @{{single_transaction.income.name}}</span>
                                         </div>
                                         <div class="user-location">
-                                            <p>@{{single_transaction.description}}</p>
+                                            <span>@{{single_transaction.description}}</span>
                                         </div>
                                     </div>
                                     <div class="action-btn">

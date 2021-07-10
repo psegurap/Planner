@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use Illuminate\Support\Carbon;
 use App\Expenses;
-// use App\IncomeTransaction;
+use App\ExpenseTransaction;
 
 class ExpenseController extends Controller
 {
@@ -15,48 +15,48 @@ class ExpenseController extends Controller
         public function expenses(){
 
             $expenses = $this->expenses_calculated_info();
-            // $transactions = IncomeTransaction::with('income')->orderBy('date', 'desc')->get()->groupBy(function($item){
-            //     return $item->date;
-            // });
-            // return view('expenses', compact('expenses', 'transactions'));
-            return view('expenses', compact('expenses'));
+            $transactions = ExpenseTransaction::with('expense')->orderBy('date', 'desc')->get()->groupBy(function($item){
+                return $item->date;
+            });
+            return view('expenses', compact('expenses', 'transactions'));
+            // return view('expenses', compact('expenses'));
         }
     
         public function add_expense(Request $request){
     
             $coming_info = $request->expense_info;
-            $income_data = [
+            $expense_data = [
                 'name' => $coming_info['name'],
                 'expected_amount' => floatval($coming_info['amount_expected']),
                 'description' => $coming_info['description'],
                 'user_id' => Auth::user()->id
             ];
     
-            Expenses::create($income_data);
+            Expenses::create($expense_data);
             $expenses = $this->expenses_calculated_info();
             return $expenses;
         }
     
-        public function update_income(Request $request){
-            $coming_info = $request->income_info;
+        public function update_expense(Request $request){
+            $coming_info = $request->expense_info;
     
-            $income_data = [
+            $expense_data = [
                 'name' => $coming_info['name'],
                 'expected_amount' => floatval($coming_info['amount_expected']),
                 'description' => $coming_info['description'],
             ];
-            Incomes::where('id', $request->income_id)->update($income_data);
+            Expenses::where('id', $request->expense_id)->update($expense_data);
             
-            $incomes = $this->expenses_calculated_info();
-            return $incomes;
+            $expenses = $this->expenses_calculated_info();
+            return $expenses;
         }
     
-        public function delete_income($id){
-            Incomes::where('id', $id)->delete();
-            IncomeTransaction::where('income_id', $id)->where('user_id', Auth::user()->id)->delete();
-            $incomes = $this->expenses_calculated_info();
+        public function delete_expense($id){
+            Expenses::where('id', $id)->delete();
+            ExpenseTransaction::where('expense_id', $id)->where('user_id', Auth::user()->id)->delete();
+            $expenses = $this->expenses_calculated_info();
             
-            return $incomes;
+            return $expenses;
         }
     
         public function expenses_calculated_info (){
@@ -74,7 +74,7 @@ class ExpenseController extends Controller
             //mapping to calculate difference between transaction added to amount expected
             $expenses = $expenses->map(function($expense){
                 $expense['difference'] = 0;
-                $expense['difference']  = ($expense['current_addition'] - $expense['expected_amount']);
+                $expense['difference']  = ($expense['expected_amount'] - $expense['current_addition']);
                 $expense['difference'] = round($expense['difference'], 2);
                 return $expense;
             });
@@ -82,10 +82,10 @@ class ExpenseController extends Controller
             return $expenses;
         }
     
-        // -------------- End Income Table Functions
+        // -------------- End Expense Table Functions
     
     
-        // -------------- Begin Income Transaction Table Functions
+        // -------------- Begin Expense Transaction Table Functions
         
         public function add_transaction(Request $request){
             $incoming_info = $request->transaction;
@@ -94,19 +94,19 @@ class ExpenseController extends Controller
                 "amount" => $incoming_info['amount'],
                 "description" => $incoming_info['description'],
                 "date" => $incoming_info['date'],
-                "income_id" => $request['income_id'],
+                "expense_id" => $request['expense_id'],
                 "user_id" =>  Auth::user()->id
             ];
     
-            IncomeTransaction::create($transaction_info);
+            ExpenseTransaction::create($transaction_info);
     
-            $transactions = IncomeTransaction::with('income')->orderBy('date', 'desc')->get()->groupBy(function($item){
+            $transactions = ExpenseTransaction::with('expense')->orderBy('date', 'desc')->get()->groupBy(function($item){
                 return $item->date;
             });
-            $incomes = $this->expenses_calculated_info();
+            $expenses = $this->expenses_calculated_info();
             
-            return ['incomes' => $incomes, 'transactions' => $transactions];
+            return ['expenses' => $expenses, 'transactions' => $transactions];
         }
         
-        // -------------- End Income Transaction Table Functions
+        // -------------- End Expense Transaction Table Functions
 }

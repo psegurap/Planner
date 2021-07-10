@@ -31,8 +31,9 @@
             letter-spacing: 0px;
         }
 
-        .searchable-items .items .item-content .amount-plus p{
-            color: #04b104;
+        .searchable-items .items .item-content .amount-less span.amount{
+            display: block;
+            color: red;
             font-weight: bold;
         }
 
@@ -191,7 +192,7 @@
 
                                                 <div class="col-md-12">
                                                     <div class="form-group">
-                                                        <textarea :disabled="sending" v-validate="'max:150|required'" name="description" style="max-height: 200px;" v-model="edit_expense.description " placeholder="Description:" cols="30" rows="5" class="form-control text-white"></textarea>
+                                                        <textarea :disabled="sending" v-validate="'max:150'" name="description" style="max-height: 200px;" v-model="edit_expense.description " placeholder="Description:" cols="30" rows="5" class="form-control text-white"></textarea>
                                                         <span class="text-danger" style="font-size: 12px;" v-show="errors.has('edit-expense.description')">* @{{ errors.first('edit-expense.description') }}</span>
                                                     </div>
                                                 </div>
@@ -250,7 +251,7 @@
 
                                                 <div class="col-md-12">
                                                     <div class="form-group">
-                                                        <textarea v-model="transaction.description" :disabled="sending" v-validate="'max:150|required'" name="description" style="max-height: 200px;" placeholder="Description:" cols="30" rows="5" class="form-control text-white"></textarea>
+                                                        <textarea v-model="transaction.description" :disabled="sending" v-validate="'max:150'" name="description" style="max-height: 200px;" placeholder="Description:" cols="30" rows="5" class="form-control text-white"></textarea>
                                                         <span class="text-danger" style="font-size: 12px;" v-show="errors.has('add-transaction.description')">* @{{ errors.first('add-transaction.description') }}</span>
                                                     </div>
                                                 </div>
@@ -270,7 +271,7 @@
                 </div>
             </div>
             <!------- Transactions List --------->
-            {{-- <div class="col-lg-12">
+            <div class="col-lg-12">
                 <div class="widget-content searchable-container list">
                     <div class="searchable-items list">
                         <div v-for="(transaction, key) in transactions" class="loop-container">
@@ -280,12 +281,12 @@
                             <div v-for="single_transaction in transaction" class="items">
                                 <div class="item-content">
                                     <div>
-                                        <div class="user-location amount-plus">
-                                            <p>@{{single_transaction.amount}}</p>
-                                            <span> - @{{single_transaction.expense.name}}</span>
+                                        <div class="user-location amount-less">
+                                            <span class="amount">@{{single_transaction.amount}}</span>
+                                            <span class="text-white"> - @{{single_transaction.expense.name}}</span>
                                         </div>
                                         <div class="user-location">
-                                            <p>@{{single_transaction.description}}</p>
+                                            <span>@{{single_transaction.description}}</span>
                                         </div>
                                     </div>
                                     <div class="action-btn">
@@ -297,7 +298,7 @@
                         
                     </div>
                 </div>
-            </div>     --}}
+            </div>    
         </div>
     </div>
         
@@ -319,7 +320,7 @@
 
     <script>
         var expenses = {!! json_encode($expenses) !!};
-        {{-- var transactions = {!! json_encode($transactions) !!};  --}}
+        var transactions = {!! json_encode($transactions) !!};
 
     </script>
     <!-- Begin Custom Files -->

@@ -34,8 +34,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::group(['prefix' => 'expenses'], function(){
         Route::get('/', 'ExpenseController@expenses')->name('expenses');
         Route::post('/add_expense', 'ExpenseController@add_expense');
-        Route::post('/update_income', 'ExpenseController@update_expense');
-        Route::post('/delete_income/{id}', 'ExpenseController@delete_expense');
+        Route::post('/update_expense', 'ExpenseController@update_expense');
+        Route::post('/delete_expense/{id}', 'ExpenseController@delete_expense');
         
         Route::group(['prefix' => 'transaction'], function(){
             Route::post('/add', 'ExpenseController@add_transaction');

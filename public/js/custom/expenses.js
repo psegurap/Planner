@@ -13,7 +13,7 @@ $(document).ready(function(){
         el: '#content',
         data : {
             expenses : expenses,
-            transactions: [],
+            transactions: transactions,
             sending : false,
             moment : moment,
             new_expense : {
