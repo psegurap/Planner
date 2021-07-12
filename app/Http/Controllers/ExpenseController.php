@@ -15,7 +15,7 @@ class ExpenseController extends Controller
         public function expenses(){
 
             $expenses = $this->expenses_calculated_info();
-            $transactions = ExpenseTransaction::with('expense')->orderBy('date', 'desc')->get()->groupBy(function($item){
+            $transactions = ExpenseTransaction::with('expense')->where('user_id', Auth::user()->id)->orderBy('date', 'desc')->get()->groupBy(function($item){
                 return $item->date;
             });
             return view('expenses', compact('expenses', 'transactions'));
@@ -100,7 +100,7 @@ class ExpenseController extends Controller
     
             ExpenseTransaction::create($transaction_info);
     
-            $transactions = ExpenseTransaction::with('expense')->orderBy('date', 'desc')->get()->groupBy(function($item){
+            $transactions = ExpenseTransaction::with('expense')->where('user_id', Auth::user()->id)->orderBy('date', 'desc')->get()->groupBy(function($item){
                 return $item->date;
             });
             $expenses = $this->expenses_calculated_info();

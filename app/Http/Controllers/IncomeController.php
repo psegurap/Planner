@@ -18,7 +18,7 @@ class IncomeController extends Controller
     public function incomes(){
 
         $incomes = $this->incomes_calculated_info();
-        $transactions = IncomeTransaction::with('income')->orderBy('date', 'desc')->get()->groupBy(function($item){
+        $transactions = IncomeTransaction::with('income')->where('user_id', Auth::user()->id)->orderBy('date', 'desc')->get()->groupBy(function($item){
             return $item->date;
         });
         return view('incomes', compact('incomes', 'transactions'));
@@ -102,7 +102,7 @@ class IncomeController extends Controller
 
         IncomeTransaction::create($transaction_info);
 
-        $transactions = IncomeTransaction::with('income')->orderBy('date', 'desc')->get()->groupBy(function($item){
+        $transactions = IncomeTransaction::with('income')->where('user_id', Auth::user()->id)->orderBy('date', 'desc')->get()->groupBy(function($item){
             return $item->date;
         });
         $incomes = $this->incomes_calculated_info();
