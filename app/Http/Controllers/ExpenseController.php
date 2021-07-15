@@ -60,7 +60,7 @@ class ExpenseController extends Controller
         }
     
         public function expenses_calculated_info (){
-            $expenses = Expenses::with(['transactions'])->where('user_id', Auth::user()->id)->get();
+            $expenses = Expenses::with('transactions')->where('user_id', Auth::user()->id)->get();
             
             //mapping to calculate the transactions made to the expense
             $expenses = $expenses->map(function($expense){
@@ -107,6 +107,19 @@ class ExpenseController extends Controller
             
             return ['expenses' => $expenses, 'transactions' => $transactions];
         }
+
+        public function delete_transaction($id){
+
+            ExpenseTransaction::find($id)->delete();
+
+            $transactions = ExpenseTransaction::with('expense')->where('user_id', Auth::user()->id)->orderBy('date', 'desc')->get()->groupBy(function($item){
+                return $item->date;
+            });
+            $expenses = $this->expenses_calculated_info();
+            
+            return ['expenses' => $expenses, 'transactions' => $transactions];
+        }
+
         
         // -------------- End Expense Transaction Table Functions
 }

@@ -27,6 +27,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         
         Route::group(['prefix' => 'transaction'], function(){
             Route::post('/add', 'IncomeController@add_transaction');
+            Route::post('/delete_transaction/{id}', 'IncomeController@delete_transaction');
         });
     
     });
@@ -37,8 +38,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::post('/update_expense', 'ExpenseController@update_expense');
         Route::post('/delete_expense/{id}', 'ExpenseController@delete_expense');
         
+        
         Route::group(['prefix' => 'transaction'], function(){
             Route::post('/add', 'ExpenseController@add_transaction');
+            Route::post('/delete_transaction/{id}', 'ExpenseController@delete_transaction');
         });
     
     });

@@ -109,6 +109,18 @@ class IncomeController extends Controller
         
         return ['incomes' => $incomes, 'transactions' => $transactions];
     }
+
+    public function delete_transaction($id){
+
+        IncomeTransaction::find($id)->delete();
+
+        $transactions = IncomeTransaction::with('income')->where('user_id', Auth::user()->id)->orderBy('date', 'desc')->get()->groupBy(function($item){
+            return $item->date;
+        });
+        $incomes = $this->incomes_calculated_info();
+        
+        return ['incomes' => $incomes, 'transactions' => $transactions];
+    }
     
     // -------------- End Income Transaction Table Functions
 

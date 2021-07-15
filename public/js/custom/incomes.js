@@ -180,10 +180,8 @@ $(document).ready(function(){
                     _this.incomes = response.data.incomes;
                     _this.transactions = response.data.transactions;
                     _this.sending = false;
-                    _this.transaction.date = '';
                     _this.transaction.amount = '';
                     _this.transaction.description = '';
-                    $('#transactionModal').modal('hide');
                     swal({
                         title: 'Success!',
                         text: "Transaction successfully added!",
@@ -202,6 +200,39 @@ $(document).ready(function(){
                     })
                     console.log(error);
                 })
+            },
+            RemoveTransaction: function(transaction_id){
+                var _this = this;
+                swal({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Delete',
+                    padding: '2em'
+                  }).then(function(result) {
+                    var _this_ = _this;
+                    if (result.value) {
+                        axios.post(homepath + '/incomes/transaction/delete_transaction/' + transaction_id).then(function(response){
+                            _this.incomes = response.data.incomes;
+                            _this.transactions = response.data.transactions;
+                            swal(
+                                'Deleted!',
+                                'Transaction successfully deleted.',
+                                'success'
+                            )
+                        }).catch(function(error){
+                            _this.sending = false;
+                            toast({
+                                type: 'error',
+                                title: 'An error has occurred.',
+                                padding: '2em',
+                            })
+                            console.log(error);
+                        })
+                      
+                    }
+                });
             },
             // -------------- END TRANSACTION FUNCTIONS 
 
