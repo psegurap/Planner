@@ -6,19 +6,31 @@
     <link href="{{asset('cork/assets/css/apps/contacts.css')}}" rel="stylesheet" type="text/css" />
 
     <style>
-        .searchable-items .items .item-content .amount-less p{
-            color: red;
+        .searchable-items .items .item-content .amount-plus span.amount{
+            display: block;
+            color: #04b104;
             font-weight: bold;
         }
 
-        .searchable-items .items .item-content .amount-plus p{
-            color: #04b104;
+        .searchable-items .items .item-content .amount-less span.amount{
+            display: block;
+            color: red;
             font-weight: bold;
         }
 
         .searchable-items .date-container .date{
             font-size: large;
             font-weight: bold;
+        }
+
+        .searchable-container .searchable-items.list .items .item-content{
+            min-width: 100%
+        }
+
+        @media (max-width: 767px){
+            .searchable-container .searchable-items.list .items{
+                min-width: 100%;
+            }
         }
     </style>
 @endsection
@@ -33,222 +45,261 @@
                 </ol>
             </nav>
         </div>                
-        <div class="row layout-spacing layout-top-spacing" id="cancel-row">
-            <div class="col-lg-12">
-                <div class="widget-content searchable-container list">
-
-                    <div class="row" style="flex-wrap: nowrap;">
-                        <div class="col-md-12" style="margin-bottom: 1em;">
-                            <div class="">
-                                <svg id="btn-add-contact" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-plus"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
-                            </div>
-
-                        </div>
-
-                        <div class="col-xl-8 col-lg-7 col-md-7 col-sm-5 text-sm-right text-center layout-spacing align-self-center">
-
-                            <!-- Modal -->
-                            <div class="modal fade" id="addContactModal" tabindex="-1" role="dialog" aria-labelledby="addContactModalTitle" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-body">
-                                            <i class="flaticon-cancel-12 close" data-dismiss="modal"></i>
-                                            <div class="add-contact-box">
-                                                <div class="add-contact-content">
-                                                    <form id="addContactModalTitle">
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <div class="contact-name">
-                                                                    <i class="flaticon-user-11"></i>
-                                                                    <input type="text" id="c-name" class="form-control" placeholder="Name">
-                                                                    <span class="validation-text"></span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <div class="contact-email">
-                                                                    <i class="flaticon-mail-26"></i>
-                                                                    <input type="text" id="c-email" class="form-control" placeholder="Email">
-                                                                    <span class="validation-text"></span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <div class="contact-occupation">
-                                                                    <i class="flaticon-fill-area"></i>
-                                                                    <input type="text" id="c-occupation" class="form-control" placeholder="Occupation">
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-md-6">
-                                                                <div class="contact-phone">
-                                                                    <i class="flaticon-telephone"></i>
-                                                                    <input type="text" id="c-phone" class="form-control" placeholder="Phone">
-                                                                    <span class="validation-text"></span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="row">
-                                                            <div class="col-md-12">
-                                                                <div class="contact-location">
-                                                                    <i class="flaticon-location-1"></i>
-                                                                    <input type="text" id="c-location" class="form-control" placeholder="Location">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                    </form>
-                                                </div>
+        <div class="row app-notes layout-top-spacing" id="cancel-row">
+            {{-- <div class="col-lg-12">
+                <div class="app-container">
+                    <div class="app-note-container">
+                        <div class="note-container  note-grid">
+                            <div class="note-item all-notes note-personal" id="income-form">
+                                <div class="note-inner-content rounded border-success">
+                                    <div class="row mb-2" >
+                                        <div class="col-12">
+                                            <p class="d-flex justify-content-between mb-3 note-title">
+                                                <span class="font-weight-bold text-uppercase">Add a new income</span>
+                                            </p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input data-vv-scope="add-income" name="name" v-model="new_income.name" :disabled="sending" v-validate="'required|max:25'" type="text" placeholder="Name:" class="form-control text-white">
+                                                <span class="text-danger" style="font-size: 12px;" v-show="errors.has('add-income.name')">* @{{ errors.first('add-income.name') }}</span>
                                             </div>
                                         </div>
-                                        <div class="modal-footer">
-                                            <button id="btn-edit" class="float-left btn">Save</button>
-
-                                            <button class="btn" data-dismiss="modal"> <i class="flaticon-delete-1"></i> Discard</button>
-
-                                            <button id="btn-add" class="btn">Add</button>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                      <span class="input-group-text">$</span>
+                                                    </div>
+                                                    <input data-vv-scope="add-income" name="expected amount" type="text" :disabled="sending" v-validate="'required|decimal:2|max:15'" v-model="new_income.amount_expected" placeholder="Amount expected:" class="form-control text-white" aria-label="Amount (to the nearest dollar)">
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text">.00</span>
+                                                    </div>
+                                                </div>
+                                                <span class="text-danger" style="font-size: 12px;" v-show="errors.has('add-income.expected amount')">* @{{ errors.first('add-income.expected amount') }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <textarea data-vv-scope="add-income" v-validate="'max:150'" :disabled="sending" name="description" style="max-height: 200px;" v-model="new_income.description " placeholder="Description (optional):" name="" id="" cols="30" rows="5" class="form-control text-white"></textarea>
+                                                <span class="text-danger" style="font-size: 12px;" v-show="errors.has('add-income.description')">* @{{ errors.first('add-income.description') }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="d-flex justify-content-between">
+                                                <button v-on:click="validate(AddIncome, 'add-income')" class="btn btn-lg btn-primary mb-2"> Add Income</button>
+                                                <span v-if="sending" class="spinner-border text-light align-self-center loader-sm"></span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="searchable-items list">
-                        {{-- <div class="items items-header-section">
-                            <div class="item-content">
-                                <div class="">
-                                    <div class="n-chk align-self-center text-center">
-                                        <label class="new-control new-checkbox checkbox-primary">
-                                          <input type="checkbox" class="new-control-input" id="contact-check-all">
-                                          <span class="new-control-indicator"></span>
-                                        </label>
-                                    </div>
-                                    <h4>Name</h4>
-                                </div>
-                                <div class="user-email">
-                                    <h4>Email</h4>
-                                </div>
-                                <div class="user-location">
-                                    <h4 style="margin-left: 0;">Location</h4>
-                                </div>
-                                <div class="user-phone">
-                                    <h4 style="margin-left: 3px;">Phone</h4>
-                                </div>
-                                <div class="action-btn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2  delete-multiple"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
-                                </div>
-                            </div>
-                        </div> --}}
-                        <div class="date-container">
-                            <p class="date">June 27</p>
-                        </div>
-                        <div class="items">
-                            <div class="item-content">
-                               <div>
-                                    <div class="user-location amount-less">
-                                        <p >-962.99</p>
-                                    </div>
-                                    <div class="user-location">
-                                        <p>Assumenda iusto dolorem vero.</p>
-                                    </div>
-                               </div>
-                                <div class="action-btn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 edit"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="items">
-                            <div class="item-content">
-                                <div>
-                                    <div class="user-location amount-less">
-                                        <p >-953.62</p>
-                                    </div>
-                                    <div class="user-location">
-                                        <p>Assumenda iusto dolorem vero.</p>
-                                    </div>
-                                </div>
-                                <div class="action-btn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 edit"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="date-container">
-                            <p class="date">June 22</p>
-                        </div>
-                        <div class="items">
-                            <div class="item-content">
-                                <div>
-                                    <div class="user-location amount-less">
-                                        <p >-381.9</p>
-                                    </div>
-                                    <div class="user-location">
-                                        <p>Assumenda iusto dolorem vero.</p>
-                                    </div>
-                                </div>
-                                <div class="action-btn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 edit"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="date-container">
-                            <p class="date">June 20</p>
-                        </div>
-                        <div class="items">
-                            <div class="item-content">
-                                <div>
-                                    <div class="user-location amount-plus">
-                                        <p >802.94</p>
-                                    </div>
-                                    <div class="user-location">
-                                        <p>Assumenda iusto dolorem vero.</p>
-                                    </div>
-                                </div>
-                                <div class="action-btn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 edit"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="items">
-                            <div class="item-content">
-                                <div>
-                                    <div class="user-location amount-less">
-                                        <p >-617.98</p>
-                                    </div>
-                                    <div class="user-location">
-                                        <p>Assumenda iusto dolorem vero.</p>
-                                    </div>
-                                </div>
-                                <div class="action-btn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 edit"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="items">
-                            <div class="item-content">
-                                <div>
-                                    <div class="user-location amount-less">
-                                        <p >-700.3</p>
-                                    </div>
-                                    <div class="user-location">
-                                        <p>Assumenda iusto dolorem vero.</p>
-                                    </div>
-                                </div>
-                                <div class="action-btn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 edit"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
-                                </div>
+                                <hr class="border border-info">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="col-lg-12">
+                <div class="app-container">
+                    <div class="app-note-container">
+                        <div class="app-note-overlay"></div>
+                        <div id="ct" class="note-container note-grid">
+                            <div v-for="income in incomes" class="note-item all-notes note-personal">
+                                <div class="border-success note-inner-content">
+                                    <div class="note-content">
+                                        <p class="note-title" data-noteTitle="Meeting with Kelly">@{{income.name}}</p>
+                                        <div class="mt-2">
+                                            <ul class="list-group">
+                                                <li class="list-group-item text-white mb-1">Expected: $@{{income.expected_amount}}</li>
+                                                <li class="list-group-item text-white mb-1">Current: $@{{income.current_addition}}</li>
+                                                <li class="list-group-item text-white">Difference: 
+                                                    <span v-if="income.difference > 0" class="text-success" >$@{{income.difference}}</span>
+                                                    <span v-else-if="income.difference < 0" class="text-danger">$@{{income.difference}}</span>
+                                                    <span v-else>$@{{income.difference}}</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <div class="note-action">
+                                            <span @click="EditModal(income.id)" class="badge link-badge-warning">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                                            </span>
+                                            <span @click="DeleteIncome(income.id)" class="badge link-badge-danger">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+                                            </span>
+                                        </div>
+                                        <div class="note-action">
+                                            <span @click="AddTransaction(income.id)" class="badge link-badge-success">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-circle"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal -->
+                <!-- EDIT INCOME -->
+                <div class="modal fade" id="incomeModal" tabindex="-1" role="dialog" aria-labelledby="notesMailModalTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body pb-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x close" data-dismiss="modal"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                                <div class="notes-box">
+                                    <div class="notes-content">                                                                        
+                                        <form action="javascript:void(0);" id="notesMailModalTitle" data-vv-scope="edit-income">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <input :disabled="sending" id="n-title" name="name" v-model="edit_income.name" v-validate="'required|max:25'" type="text" placeholder="Name:" class="form-control text-white">
+                                                        <span class="text-danger" style="font-size: 12px;" v-show="errors.has('edit-income.name')">* @{{ errors.first('edit-income.name') }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                              <span class="input-group-text">$</span>
+                                                            </div>
+                                                            <input :disabled="sending" id="n-amount-expected" name="expected amount" type="text" v-validate="'required|decimal:2|max:15'" v-model="edit_income.amount_expected" placeholder="Amount expected:" class="form-control text-white" aria-label="Amount (to the nearest dollar)">
+                                                        </div>
+                                                        <span class="text-danger" style="font-size: 12px;" v-show="errors.has('edit-income.expected amount')">* @{{ errors.first('edit-income.expected amount') }}</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <textarea :disabled="sending" v-validate="'max:150'" name="description" style="max-height: 200px;" v-model="edit_income.description " placeholder="Description:" cols="30" rows="5" class="form-control text-white"></textarea>
+                                                        <span class="text-danger" style="font-size: 12px;" v-show="errors.has('edit-income.description')">* @{{ errors.first('edit-income.description') }}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <span v-if="sending" class="spinner-border text-light align-self-center loader-sm"></span>
+                                <button id="btn-n-save" @click="validate(UpdateIncome, 'edit-income')" class="float-left btn">Update</button>
+                                <button class="btn" data-dismiss="modal">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ADD TRANSACTION -->
+                <div class="modal fade" id="transactionModal" tabindex="-1" role="dialog" aria-labelledby="notesMailModalTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body pb-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x close" data-dismiss="modal"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                                <div class="notes-box">
+                                    <div class="notes-content">                                                                        
+                                        <form action="javascript:void(0);"  data-vv-scope="add-transaction">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div>
+                                                        <p class="income-title text-uppercase">@{{transaction.income_name}}</p>
+                                                    </div>
+                                                    <hr class="border border-success mt-3">
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <input v-model="transaction.date" name="date" v-validate="'required'" id="transactionDate" class="form-control flatpickr active text-white" type="text" placeholder="Select Date:">
+                                                        <span class="text-danger" style="font-size: 12px;" v-show="errors.has('add-transaction.date')">* @{{ errors.first('add-transaction.date') }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                              <span class="input-group-text">$</span>
+                                                            </div>
+                                                            <input v-model="transaction.amount" :disabled="sending" name="amount" type="text" v-validate="'required|decimal:2|max:15'" placeholder="Amount:" class="form-control text-white" aria-label="Amount (to the nearest dollar)">
+                                                            <div class="input-group-append">
+                                                                <span class="input-group-text">.00</span>
+                                                            </div>
+                                                        </div>
+                                                        <span class="text-danger" style="font-size: 12px;" v-show="errors.has('add-transaction.amount')">* @{{ errors.first('add-transaction.amount') }}</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <textarea v-model="transaction.description" :disabled="sending" v-validate="'max:150'" name="description" style="max-height: 200px;" placeholder="Description:" cols="30" rows="5" class="form-control text-white"></textarea>
+                                                        <span class="text-danger" style="font-size: 12px;" v-show="errors.has('add-transaction.description')">* @{{ errors.first('add-transaction.description') }}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <span v-if="sending" class="spinner-border text-light align-self-center loader-sm"></span>
+                                <button id="btn-n-save" @click="validate(SaveTransaction, 'add-transaction')" class="float-left btn">Add Transaction</button>
+                                <button class="btn" data-dismiss="modal">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> --}}
+            <!------- Transactions List --------->
+            <div class="col-lg-12">
+                <div class="widget-content searchable-container list">
+                    <div class="searchable-items list">
+                        <div v-for="(transaction, key) in transactions" class="loop-container">
+                            <div class="date-container">
+                                <p class="date">@{{moment(key).format("MMM Do")}}</p>
+                            </div>
+                            <div v-for="single_transaction in transaction" class="items">
+                                <div class="item-content">
+                                    <div>
+                                        <div v-if="single_transaction.income_id" class="user-location amount-plus">
+                                            <span class="amount">@{{single_transaction.amount}}</span>
+                                            <span class="text-white"> - @{{single_transaction.income.name}}</span>
+                                        </div>
+                                        <div v-else class="user-location amount-less">
+                                            <span class="amount">@{{single_transaction.amount}}</span>
+                                            <span class="text-white"> - @{{single_transaction.expense.name}}</span>
+                                        </div>
+                                        <div class="user-location">
+                                            <span>@{{single_transaction.description}}</span>
+                                        </div>
+                                    </div>
+                                    <div @click="RemoveTransaction(single_transaction.id)" class="action-btn badge link-badge-info">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>   
         </div>
     </div>
     <!--  END CONTENT PART  -->
 @endsection
 
 @section('scripts')
-    
+
+    <script src="{{asset('/cork/plugins/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
+    <script src="{{asset('/cork/assets/js/app.js')}}"></script>
+    <script src="{{asset('/cork/plugins/sweetalerts/sweetalert2.min.js')}}"></script>
+    <script src="{{asset('/cork/plugins/sweetalerts/custom-sweetalert.js')}}"></script>
+
+    <script>
+        var transactions = {!! json_encode($transactions) !!};
+
+    </script>
+    <!-- Begin Custom Files -->
+    <script src="{{asset('/js/custom/transactions.js')}}"></script>
+        
+    <!-- End Custom Files -->
 @endsection
+
