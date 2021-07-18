@@ -16,9 +16,9 @@ class TransactionController extends Controller
         $Incomes_transactions = IncomeTransaction::with('income')->where('user_id', Auth::user()->id)->get();
         $Expenses_transactions = ExpenseTransaction::with('expense')->where('user_id', Auth::user()->id)->get();
 
-        $transactions = $Incomes_transactions->merge($Expenses_transactions);
+        $transactions = $Incomes_transactions->toBase()->merge($Expenses_transactions);
         $transactions = $transactions->sortByDesc('date');
-
+        
         $transactions = $transactions->groupBy(function($item){
                 return $item->date;
         });
